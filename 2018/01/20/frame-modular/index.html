@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="IDE设置 git clone 代码 mvn install 在工作目录中使用mvn eclipse:eclipse[Eclipse]或mvn idea:idea[Intellij IDEA]初始化工程 在IDE中导入已有工程  打包与运行 打包jar命令：mvn package -P dev[开发环境配置]，mvn package -P online[生产环境配置]其中，开发环境dev的配置位于">
+<meta name="description" content="IDE设置 git clone 代码 mvn install 在工作目录中使用mvn eclipse:eclipse[Eclipse]或mvn idea:idea[Intellij IDEA]初始化工程 在IDE中导入已有工程">
 <meta name="keywords" content="black magic,fucking trick">
 <meta property="og:type" content="article">
 <meta property="og:title" content="基础框架-Maven模块化">
 <meta property="og:url" content="http://yoursite.com/2018/01/20/frame-modular/index.html">
 <meta property="og:site_name" content="刘劲松的博客">
-<meta property="og:description" content="IDE设置 git clone 代码 mvn install 在工作目录中使用mvn eclipse:eclipse[Eclipse]或mvn idea:idea[Intellij IDEA]初始化工程 在IDE中导入已有工程  打包与运行 打包jar命令：mvn package -P dev[开发环境配置]，mvn package -P online[生产环境配置]其中，开发环境dev的配置位于">
+<meta property="og:description" content="IDE设置 git clone 代码 mvn install 在工作目录中使用mvn eclipse:eclipse[Eclipse]或mvn idea:idea[Intellij IDEA]初始化工程 在IDE中导入已有工程">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-01-21T01:15:37.032Z">
+<meta property="og:updated_time" content="2018-01-21T03:19:47.673Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="基础框架-Maven模块化">
-<meta name="twitter:description" content="IDE设置 git clone 代码 mvn install 在工作目录中使用mvn eclipse:eclipse[Eclipse]或mvn idea:idea[Intellij IDEA]初始化工程 在IDE中导入已有工程  打包与运行 打包jar命令：mvn package -P dev[开发环境配置]，mvn package -P online[生产环境配置]其中，开发环境dev的配置位于">
+<meta name="twitter:description" content="IDE设置 git clone 代码 mvn install 在工作目录中使用mvn eclipse:eclipse[Eclipse]或mvn idea:idea[Intellij IDEA]初始化工程 在IDE中导入已有工程">
 
 
 
@@ -387,9 +387,10 @@
 <li>git clone 代码</li>
 <li><code>mvn install</code></li>
 <li>在工作目录中使用<code>mvn eclipse:eclipse</code>[Eclipse]或<code>mvn idea:idea</code>[Intellij IDEA]初始化工程</li>
-<li>在IDE中导入已有工程</li>
+<li>在IDE中导入已有工程<a id="more"></a>
+<h2 id="打包与运行"><a href="#打包与运行" class="headerlink" title="打包与运行"></a>打包与运行</h2></li>
 </ol>
-<h2 id="打包与运行"><a href="#打包与运行" class="headerlink" title="打包与运行"></a>打包与运行</h2><ul>
+<ul>
 <li><p>打包jar<br>命令：<code>mvn package -P dev</code>[开发环境配置]，<code>mvn package -P online</code>[生产环境配置]<br><br>其中，开发环境dev的配置位于<code>src/main/resources/dev</code>中，生产环境online的配置位于<code>src/main/resources/online</code>中<br><br>默认为dev开发环境的配置</p>
 </li>
 <li><p>运行<br>其中<code>datadriver-web</code>中是war包，该包中包含有其他模块的jar在lib目录中</p>
