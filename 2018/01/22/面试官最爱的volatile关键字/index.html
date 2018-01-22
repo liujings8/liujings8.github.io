@@ -89,13 +89,13 @@
 <meta property="og:site_name" content="phantomliu&#39;s blog">
 <meta property="og:description" content="在Java相关的岗位面试中，很多面试官都喜欢考察面试者对Java并发的了解程度，而以volatile关键字作为一个小的切入点，往往可以一问到底，把Java内存模型（JMM），Java并发编程的一些特性都牵扯出来，深入地话还可以考察JVM底层实现以及操作系统的相关知识。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://yoursite.com/images/1603a6fae545a200.png">
-<meta property="og:image" content="https://user-gold-cdn.xitu.io/2017/12/9/1603ac14eb04b21e">
-<meta property="og:updated_time" content="2018-01-22T18:35:36.298Z">
+<meta property="og:image" content="http://yoursite.com/2018/01/22/面试官最爱的volatile关键字/images/1603a6fae545a200.png">
+<meta property="og:image" content="http://yoursite.com/2018/01/22/面试官最爱的volatile关键字/images/1603ac14eb04b21e">
+<meta property="og:updated_time" content="2018-01-22T18:37:41.025Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="面试官最爱的volatile关键字">
 <meta name="twitter:description" content="在Java相关的岗位面试中，很多面试官都喜欢考察面试者对Java并发的了解程度，而以volatile关键字作为一个小的切入点，往往可以一问到底，把Java内存模型（JMM），Java并发编程的一些特性都牵扯出来，深入地话还可以考察JVM底层实现以及操作系统的相关知识。">
-<meta name="twitter:image" content="http://yoursite.com/images/1603a6fae545a200.png">
+<meta name="twitter:image" content="http://yoursite.com/2018/01/22/面试官最爱的volatile关键字/images/1603a6fae545a200.png">
 
 
 
@@ -452,7 +452,7 @@
 <h2 id="面试官-能不能详细说下什么是内存可见性，什么又是重排序呢？"><a href="#面试官-能不能详细说下什么是内存可见性，什么又是重排序呢？" class="headerlink" title="面试官: 能不能详细说下什么是内存可见性，什么又是重排序呢？"></a>面试官: 能不能详细说下什么是内存可见性，什么又是重排序呢？</h2><p>这个聊起来可就多了，我还是从Java内存模型说起吧。<br>Java虚拟机规范试图定义一种Java内存模型（JMM）,来屏蔽掉各种硬件和操作系统的内存访问差异，让Java程序在各种平台上都能达到一致的内存访问效果。简单来说，由于CPU执行指令的速度是很快的，但是内存访问的速度就慢了很多，相差的不是一个数量级，所以搞处理器的那群大佬们又在CPU里加了好几层高速缓存。</p>
 <p>在Java内存模型里，对上述的优化又进行了一波抽象。JMM规定所有变量都是存在主存中的，类似于上面提到的普通内存，每个线程又包含自己的工作内存，方便理解就可以看成CPU上的寄存器或者高速缓存。所以线程的操作都是以工作内存为主，它们只能访问自己的工作内存，且工作前后都要把值在同步回主内存。</p>
 <p>这么说得我自己都有些不清楚了，拿张纸画一下：</p>
-<p><img src="/images/1603a6fae545a200.png" alt=""><br>在线程执行时，首先会从主存中read变量值，再load到工作内存中的副本中，然后再传给处理器执行，执行完毕后再给工作内存中的副本赋值，随后工作内存再把值传回给主存，主存中的值才更新。</p>
+<p><img src="images/1603a6fae545a200.png" alt=""><br>在线程执行时，首先会从主存中read变量值，再load到工作内存中的副本中，然后再传给处理器执行，执行完毕后再给工作内存中的副本赋值，随后工作内存再把值传回给主存，主存中的值才更新。</p>
 <p>使用工作内存和主存，虽然加快的速度，但是也带来了一些问题。比如看下面一个例子：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">i = i + 1;</span><br></pre></td></tr></table></figure></p>
 <p>假设i初值为0，当只有一个线程执行它时，结果肯定得到1，当两个线程执行时，会得到结果2吗？这倒不一定了。可能存在这种情况：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">线程1： load i from 主存    // i = 0</span><br><span class="line">        i + 1  // i = 1</span><br><span class="line">线程2： load i from主存  // 因为线程1还没将i的值写回主存，所以i还是0</span><br><span class="line">        i +  1 //i = 1</span><br><span class="line">线程1:  save i to 主存</span><br><span class="line">线程2： save i to 主存</span><br></pre></td></tr></table></figure></p>
 <p>如果两个线程按照上面的执行流程，那么i最后的值居然是1了。如果最后的写回生效的慢，你再读取i的值，都可能是0，这就是缓存不一致问题。</p>
@@ -469,7 +469,7 @@
 <p>上面的语句，可以按照A-&gt;B-&gt;C执行，结果为3.14,但是也可以按照B-&gt;A-&gt;C的顺序执行，因为A、B是两句独立的语句，而C则依赖于A、B，所以A、B可以重排序，但是C却不能排到A、B的前面。JMM保证了重排序不会影响到单线程的执行，但是在多线程中却容易出问题。</p>
 <p>比如这样的代码:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">int a = 0;</span><br><span class="line">bool flag = false;</span><br><span class="line"></span><br><span class="line">public void write() &#123;</span><br><span class="line">    a = 2;              //1</span><br><span class="line">    flag = true;        //2</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public void multiply() &#123;</span><br><span class="line">    if (flag) &#123;         //3</span><br><span class="line">        int ret = a * a;//4</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <p>假如有两个线程执行上述代码段，线程1先执行write，随后线程2再执行multiply，最后ret的值一定是4吗？结果不一定：</p>
-<p><img src="https://user-gold-cdn.xitu.io/2017/12/9/1603ac14eb04b21e" alt=""></p>
+<p><img src="images/1603ac14eb04b21e" alt=""></p>
 <p>如图所示，write方法里的1和2做了重排序，线程1先对flag赋值为true，随后执行到线程2，ret直接计算出结果，再到线程1，这时候a才赋值为2,很明显迟了一步。</p>
 <p>这时候可以为flag加上volatile关键字，禁止重排序，可以确保程序的“有序性”，也可以上重量级的synchronized和Lock来保证有序性,它们能保证那一块区域里的代码都是一次性执行完毕的。</p>
 <p>另外，JMM具备一些先天的<strong>有序性</strong>,即不需要通过任何手段就可以保证的有序性，通常称为<strong>happens-before</strong>原则。<code>&lt;&lt;JSR-133：Java Memory Model and Thread Specification&gt;&gt;</code>定义了如下happens-before规则：</p>
