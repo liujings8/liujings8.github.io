@@ -61,30 +61,6 @@
   </entry>
   
   <entry>
-    <title>基础框架-Maven模块化</title>
-    <link href="http://yoursite.com/2018/01/20/frame-modular/"/>
-    <id>http://yoursite.com/2018/01/20/frame-modular/</id>
-    <published>2018-01-20T07:08:32.000Z</published>
-    <updated>2018-01-21T11:52:11.795Z</updated>
-    
-    <content type="html"><![CDATA[<p>这个是maven分模块的工程。<br><a id="more"></a></p><h2 id="IDE设置"><a href="#IDE设置" class="headerlink" title="IDE设置"></a>IDE设置</h2><ol><li>git clone 代码</li><li><code>mvn install</code></li><li>在工作目录中使用<code>mvn eclipse:eclipse</code>[Eclipse]或<code>mvn idea:idea</code>[Intellij IDEA]初始化工程</li><li>在IDE中导入已有工程</li></ol><h2 id="打包与运行"><a href="#打包与运行" class="headerlink" title="打包与运行"></a>打包与运行</h2><ul><li><p>打包jar<br>命令：<code>mvn package -P dev</code>[开发环境配置]，<code>mvn package -P online</code>[生产环境配置]<br><br>其中，开发环境dev的配置位于<code>src/main/resources/dev</code>中，生产环境online的配置位于<code>src/main/resources/online</code>中<br><br>默认为dev开发环境的配置</p></li><li><p>运行<br>其中<code>datadriver-web</code>中是war包，该包中包含有其他模块的jar在lib目录中</p></li></ul>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;这个是maven分模块的工程。&lt;br&gt;
-    
-    </summary>
-    
-      <category term="Datadriver" scheme="http://yoursite.com/categories/Datadriver/"/>
-    
-    
-      <category term="black magic" scheme="http://yoursite.com/tags/black-magic/"/>
-    
-      <category term="fucking trick" scheme="http://yoursite.com/tags/fucking-trick/"/>
-    
-  </entry>
-  
-  <entry>
     <title>知乎爬虫</title>
     <link href="http://yoursite.com/2018/01/20/zhihu-crawler/"/>
     <id>http://yoursite.com/2018/01/20/zhihu-crawler/</id>
@@ -100,6 +76,30 @@
     </summary>
     
       <category term="github" scheme="http://yoursite.com/categories/github/"/>
+    
+    
+      <category term="black magic" scheme="http://yoursite.com/tags/black-magic/"/>
+    
+      <category term="fucking trick" scheme="http://yoursite.com/tags/fucking-trick/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>基础框架-Maven模块化</title>
+    <link href="http://yoursite.com/2018/01/20/frame-modular/"/>
+    <id>http://yoursite.com/2018/01/20/frame-modular/</id>
+    <published>2018-01-20T07:08:32.000Z</published>
+    <updated>2018-01-21T11:52:11.795Z</updated>
+    
+    <content type="html"><![CDATA[<p>这个是maven分模块的工程。<br><a id="more"></a></p><h2 id="IDE设置"><a href="#IDE设置" class="headerlink" title="IDE设置"></a>IDE设置</h2><ol><li>git clone 代码</li><li><code>mvn install</code></li><li>在工作目录中使用<code>mvn eclipse:eclipse</code>[Eclipse]或<code>mvn idea:idea</code>[Intellij IDEA]初始化工程</li><li>在IDE中导入已有工程</li></ol><h2 id="打包与运行"><a href="#打包与运行" class="headerlink" title="打包与运行"></a>打包与运行</h2><ul><li><p>打包jar<br>命令：<code>mvn package -P dev</code>[开发环境配置]，<code>mvn package -P online</code>[生产环境配置]<br><br>其中，开发环境dev的配置位于<code>src/main/resources/dev</code>中，生产环境online的配置位于<code>src/main/resources/online</code>中<br><br>默认为dev开发环境的配置</p></li><li><p>运行<br>其中<code>datadriver-web</code>中是war包，该包中包含有其他模块的jar在lib目录中</p></li></ul>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;这个是maven分模块的工程。&lt;br&gt;
+    
+    </summary>
+    
+      <category term="Datadriver" scheme="http://yoursite.com/categories/Datadriver/"/>
     
     
       <category term="black magic" scheme="http://yoursite.com/tags/black-magic/"/>
