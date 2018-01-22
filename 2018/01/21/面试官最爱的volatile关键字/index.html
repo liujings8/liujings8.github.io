@@ -91,7 +91,7 @@
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://user-gold-cdn.xitu.io/2017/12/9/1603a6fae545a200?imageView2/0/w/1280/h/960/format/webp/ignore-error/1">
 <meta property="og:image" content="https://user-gold-cdn.xitu.io/2017/12/9/1603ac14eb04b21e?imageView2/0/w/1280/h/960/format/webp/ignore-error/1">
-<meta property="og:updated_time" content="2018-01-22T17:39:29.862Z">
+<meta property="og:updated_time" content="2018-01-22T17:41:03.507Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="面试官最爱的volatile关键字">
 <meta name="twitter:description" content="在Java相关的岗位面试中，很多面试官都喜欢考察面试者对Java并发的了解程度，而以volatile关键字作为一个小的切入点，往往可以一问到底，把Java内存模型（JMM），Java并发编程的一些特性都牵扯出来，深入地话还可以考察JVM底层实现以及操作系统的相关知识。">
@@ -428,7 +428,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  3,956
+                  3,948
                 </span>
               
 
@@ -493,7 +493,7 @@
 <p><img src="https://user-gold-cdn.xitu.io/2017/12/9/1603ac14eb04b21e?imageView2/0/w/1280/h/960/format/webp/ignore-error/1" alt=""></p>
 <p>如图所示，write方法里的1和2做了重排序，线程1先对flag赋值为true，随后执行到线程2，ret直接计算出结果，再到线程1，这时候a才赋值为2,很明显迟了一步。</p>
 <p>这时候可以为flag加上volatile关键字，禁止重排序，可以确保程序的“有序性”，也可以上重量级的synchronized和Lock来保证有序性,它们能保证那一块区域里的代码都是一次性执行完毕的。</p>
-<p>另外，JMM具备一些先天的<strong>有序性</strong>,即不需要通过任何手段就可以保证的有序性，通常称为<strong>happens-before</strong>原则。<code>&lt;&lt;JSR-133：Java Memory Model and Thread Specification&gt;&gt;</code>定义了如下happens-before规则：</p>
+<p>另外，JMM具备一些先天的<strong>有序性</strong>,即不需要通过任何手段就可以保证的有序性，通常称为<strong>happens-before</strong>原则。&lt;<jsr-133：java memory="" model="" and="" thread="" specification="">&gt;定义了如下happens-before规则：</jsr-133：java></p>
 <p>1程序顺序规则： 一个线程中的每个操作，happens-before于该线程中的任意后续操作<br>2.监视器锁规则：对一个线程的解锁，happens-before于随后对这个线程的加锁<br>3.volatile变量规则： 对一个volatile域的写，happens-before于后续对这个volatile域的读<br>4.传递性：如果A happens-before B ,且 B happens-before C, 那么 A happens-before C<br>5.start()规则： 如果线程A执行操作ThreadB_start()(启动线程B) ,  那么A线程的ThreadB_start()happens-before 于B中的任意操作<br>6.join()原则： 如果A执行ThreadB.join()并且成功返回，那么线程B中的任意操作happens-before于线程A从ThreadB.join()操作成功返回。<br>7.interrupt()原则： 对线程interrupt()方法的调用先行发生于被中断线程代码检测到中断事件的发生，可以通过Thread.interrupted()方法检测是否有中断发生<br>8.finalize()原则：一个对象的初始化完成先行发生于它的finalize()方法的开始</p>
 <p>第1条规则程序顺序规则是说在一个线程里，所有的操作都是按顺序的，但是在JMM里其实只要执行结果一样，是允许重排序的，这边的happens-before强调的重点也是单线程执行结果的正确性，但是无法保证多线程也是如此。</p>
 <p>第2条规则监视器规则其实也好理解，就是在加锁之前，确定这个锁之前已经被释放了，才能继续加锁。</p>
