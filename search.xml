@@ -4,7 +4,7 @@
     
     <entry>
       <title><![CDATA[面试官最爱的volatile关键字]]></title>
-      <url>/2018/01/21/%E9%9D%A2%E8%AF%95%E5%AE%98%E6%9C%80%E7%88%B1%E7%9A%84volatile%E5%85%B3%E9%94%AE%E5%AD%97/</url>
+      <url>/2018/01/22/%E9%9D%A2%E8%AF%95%E5%AE%98%E6%9C%80%E7%88%B1%E7%9A%84volatile%E5%85%B3%E9%94%AE%E5%AD%97/</url>
       <content type="html"><![CDATA[<p>在Java相关的岗位面试中，很多面试官都喜欢考察面试者对Java并发的了解程度，而以<strong>volatile</strong>关键字作为一个小的切入点，往往可以一问到底，把Java内存模型（JMM），Java并发编程的一些特性都牵扯出来，深入地话还可以考察JVM底层实现以及操作系统的相关知识。<br><a id="more"></a></p>
 <p>下面我们以一次假想的面试过程，来深入了解下volitile关键字吧</p>
 <h2 id="面试官-Java并发这块了解的怎么样？说说你对volatile关键字的理解"><a href="#面试官-Java并发这块了解的怎么样？说说你对volatile关键字的理解" class="headerlink" title="面试官: Java并发这块了解的怎么样？说说你对volatile关键字的理解"></a>面试官: Java并发这块了解的怎么样？说说你对volatile关键字的理解</h2><p>就我理解的而言，被volatile修饰的共享变量，就具有了以下两点特性：</p>
@@ -106,41 +106,6 @@
     </entry>
     
     <entry>
-      <title><![CDATA[基础框架-Maven模块化]]></title>
-      <url>/2018/01/20/frame-modular/</url>
-      <content type="html"><![CDATA[<p>这个是maven分模块的工程。<br><a id="more"></a></p>
-<h2 id="IDE设置"><a href="#IDE设置" class="headerlink" title="IDE设置"></a>IDE设置</h2><ol>
-<li>git clone 代码</li>
-<li><code>mvn install</code></li>
-<li>在工作目录中使用<code>mvn eclipse:eclipse</code>[Eclipse]或<code>mvn idea:idea</code>[Intellij IDEA]初始化工程</li>
-<li>在IDE中导入已有工程</li>
-</ol>
-<h2 id="打包与运行"><a href="#打包与运行" class="headerlink" title="打包与运行"></a>打包与运行</h2><ul>
-<li><p>打包jar<br>命令：<code>mvn package -P dev</code>[开发环境配置]，<code>mvn package -P online</code>[生产环境配置]<br><br>其中，开发环境dev的配置位于<code>src/main/resources/dev</code>中，生产环境online的配置位于<code>src/main/resources/online</code>中<br><br>默认为dev开发环境的配置</p>
-</li>
-<li><p>运行<br>其中<code>datadriver-web</code>中是war包，该包中包含有其他模块的jar在lib目录中</p>
-</li>
-</ul>
-]]></content>
-      
-        <categories>
-            
-            <category> Datadriver </category>
-            
-        </categories>
-        
-        
-        <tags>
-            
-            <tag> black magic </tag>
-            
-            <tag> fucking trick </tag>
-            
-        </tags>
-        
-    </entry>
-    
-    <entry>
       <title><![CDATA[知乎爬虫]]></title>
       <url>/2018/01/20/zhihu-crawler/</url>
       <content type="html"><![CDATA[<p>zhihu-crawler是一个基于Java的爬虫实战项目，主要功能是抓取知乎用户的基本资料，如果觉得不错，请给个star。<br><a id="more"></a></p>
@@ -222,6 +187,41 @@
         <categories>
             
             <category> github </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> black magic </tag>
+            
+            <tag> fucking trick </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[基础框架-Maven模块化]]></title>
+      <url>/2018/01/20/frame-modular/</url>
+      <content type="html"><![CDATA[<p>这个是maven分模块的工程。<br><a id="more"></a></p>
+<h2 id="IDE设置"><a href="#IDE设置" class="headerlink" title="IDE设置"></a>IDE设置</h2><ol>
+<li>git clone 代码</li>
+<li><code>mvn install</code></li>
+<li>在工作目录中使用<code>mvn eclipse:eclipse</code>[Eclipse]或<code>mvn idea:idea</code>[Intellij IDEA]初始化工程</li>
+<li>在IDE中导入已有工程</li>
+</ol>
+<h2 id="打包与运行"><a href="#打包与运行" class="headerlink" title="打包与运行"></a>打包与运行</h2><ul>
+<li><p>打包jar<br>命令：<code>mvn package -P dev</code>[开发环境配置]，<code>mvn package -P online</code>[生产环境配置]<br><br>其中，开发环境dev的配置位于<code>src/main/resources/dev</code>中，生产环境online的配置位于<code>src/main/resources/online</code>中<br><br>默认为dev开发环境的配置</p>
+</li>
+<li><p>运行<br>其中<code>datadriver-web</code>中是war包，该包中包含有其他模块的jar在lib目录中</p>
+</li>
+</ul>
+]]></content>
+      
+        <categories>
+            
+            <category> Datadriver </category>
             
         </categories>
         
