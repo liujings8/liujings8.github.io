@@ -1,0 +1,9 @@
+[submodule "themes/Casper"]
+	path = themes/Casper
+	url = https://github.com/liujings8/Casper.git
+[submodule "themes/hexo-theme-yilia"]
+	path = themes/hexo-theme-yilia
+	url = https://github.com/litten/hexo-theme-yilia.git
+[submodule "themes/hexo-theme-next"]
+	path = themes/hexo-theme-next
+	url = https://github.com/liujings8/hexo-theme-next.git
