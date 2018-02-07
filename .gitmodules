@@ -1,6 +1,7 @@
 [submodule "themes/Casper"]
 	path = themes/Casper
 	url = https://github.com/liujings8/Casper.git
+	branch = master
 [submodule "themes/next"]
 	path = themes/next
 	url = https://github.com/liujings8/hexo-theme-next.git
