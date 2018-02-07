@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2018-02-07T06:17:28.509Z</updated>
+  <updated>2018-02-07T06:57:49.903Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -17,26 +17,30 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title></title>
+    <title>常用软件激活教程</title>
     <link href="http://yoursite.com/2018/02/07/software-activation/"/>
     <id>http://yoursite.com/2018/02/07/software-activation/</id>
-    <published>2018-02-07T06:17:28.509Z</published>
-    <updated>2018-02-07T06:17:28.509Z</updated>
+    <published>2018-02-07T14:15:00.000Z</published>
+    <updated>2018-02-07T06:57:49.903Z</updated>
     
-    <content type="html"><![CDATA[<p>–<br>title: 常用软件激活教程<br>date: 2018-02-07 14:15:00<br>categories: Software<br>tags:</p><pre><code>- software- activation</code></pre><p>–</p><p>####IntelliJ IDEA Mybatis Plugin 激活</p><p>#####REFER TO<br><a href="http://shawnho.me/2017/12/20/ideaagent/" target="_blank" rel="noopener">http://shawnho.me/2017/12/20/ideaagent/</a><br><a href="https://github.com/mrshawnho/ideaagent" target="_blank" rel="noopener">https://github.com/mrshawnho/ideaagent</a></p><p>#####TIME<br>2018-02-07</p><p>#####VERSION<br>Mybatis Plugin 3.42<br>IntelliJ IDEA 2017.3.4(Ultimate Edition)</p>]]></content>
+    <content type="html"><![CDATA[<p>####IntelliJ IDEA Mybatis Plugin 激活</p><p>#####REFER TO<br><a href="http://shawnho.me/2017/12/20/ideaagent/" target="_blank" rel="noopener">http://shawnho.me/2017/12/20/ideaagent/</a><br><a href="https://github.com/mrshawnho/ideaagent" target="_blank" rel="noopener">https://github.com/mrshawnho/ideaagent</a></p><p>#####TIME<br>2018-02-07</p><p>#####VERSION<br>Mybatis Plugin 3.42<br>IntelliJ IDEA 2017.3.4(Ultimate Edition)</p>]]></content>
     
     <summary type="html">
     
       
       
-        &lt;p&gt;–&lt;br&gt;title: 常用软件激活教程&lt;br&gt;date: 2018-02-07 14:15:00&lt;br&gt;categories: Software&lt;br&gt;tags:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;- software
-- activation
-&lt;/code&gt;&lt;/pre&gt;&lt;p
+        &lt;p&gt;####IntelliJ IDEA Mybatis Plugin 激活&lt;/p&gt;
+&lt;p&gt;#####REFER TO&lt;br&gt;&lt;a href=&quot;http://shawnho.me/2017/12/20/ideaagent/&quot; target=&quot;_blank&quot; rel=&quot;noopen
       
     
     </summary>
     
+      <category term="Software" scheme="http://yoursite.com/categories/Software/"/>
+    
+    
+      <category term="software" scheme="http://yoursite.com/tags/software/"/>
+    
+      <category term="activation" scheme="http://yoursite.com/tags/activation/"/>
     
   </entry>
   

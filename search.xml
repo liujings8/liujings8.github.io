@@ -1,9 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title></title>
+    <title><![CDATA[常用软件激活教程]]></title>
     <url>%2F2018%2F02%2F07%2Fsoftware-activation%2F</url>
-    <content type="text"><![CDATA[–title: 常用软件激活教程date: 2018-02-07 14:15:00categories: Softwaretags: - software - activation – ####IntelliJ IDEA Mybatis Plugin 激活 #####REFER TOhttp://shawnho.me/2017/12/20/ideaagent/https://github.com/mrshawnho/ideaagent #####TIME2018-02-07 #####VERSIONMybatis Plugin 3.42IntelliJ IDEA 2017.3.4(Ultimate Edition)]]></content>
+    <content type="text"><![CDATA[####IntelliJ IDEA Mybatis Plugin 激活 #####REFER TOhttp://shawnho.me/2017/12/20/ideaagent/https://github.com/mrshawnho/ideaagent #####TIME2018-02-07 #####VERSIONMybatis Plugin 3.42IntelliJ IDEA 2017.3.4(Ultimate Edition)]]></content>
+      <categories>
+        <category>Software</category>
+      </categories>
+      <tags>
+        <tag>software</tag>
+        <tag>activation</tag>
+      </tags>
   </entry>
   <entry>
     <title><![CDATA[Hello World]]></title>
