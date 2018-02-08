@@ -327,7 +327,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/02/08/linkedHashMap-analysis/" itemprop="url">linkedHashMap 底层分析</a></h1>
+                <a class="post-title-link" href="/2018/02/08/linkedHashMap-analysis/" itemprop="url">LinkedHashMap 底层分析</a></h1>
         
 
         <div class="post-meta">
@@ -434,7 +434,8 @@
       
         
           
-            
+            <a id="more"></a>
+
           
         
       
@@ -569,7 +570,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  36
+                  58
                 </span>
               
 
@@ -607,12 +608,17 @@
 
       
         
-          
-            <h4 id="IntelliJ-IDEA-Mybatis-Plugin-激活"><a href="#IntelliJ-IDEA-Mybatis-Plugin-激活" class="headerlink" title="IntelliJ IDEA Mybatis Plugin 激活"></a>IntelliJ IDEA Mybatis Plugin 激活</h4><h5 id="REFER-TO"><a href="#REFER-TO" class="headerlink" title="REFER TO"></a>REFER TO</h5><p><a href="http://shawnho.me/2017/12/20/ideaagent/" target="_blank" rel="noopener">http://shawnho.me/2017/12/20/ideaagent/</a><br><a href="https://github.com/mrshawnho/ideaagent" target="_blank" rel="noopener">https://github.com/mrshawnho/ideaagent</a></p>
-<h5 id="TIME"><a href="#TIME" class="headerlink" title="TIME"></a>TIME</h5><p>2018-02-07</p>
-<h5 id="VERSION"><a href="#VERSION" class="headerlink" title="VERSION"></a>VERSION</h5><p>Mybatis Plugin 3.42<br>IntelliJ IDEA 2017.3.4(Ultimate Edition)</p>
-
-          
+          <h4 id="IntelliJ-IDEA-激活"><a href="#IntelliJ-IDEA-激活" class="headerlink" title="IntelliJ IDEA 激活"></a>IntelliJ IDEA 激活</h4><ul>
+<li><h5 id="REFER-TO"><a href="#REFER-TO" class="headerlink" title="REFER TO"></a>REFER TO</h5><a href="http://blog.lanyus.com/" target="_blank" rel="noopener">http://blog.lanyus.com/</a></li>
+<li><h5 id="TIME"><a href="#TIME" class="headerlink" title="TIME"></a>TIME</h5>2018-02-08</li>
+<li><h5 id="VERSION"><a href="#VERSION" class="headerlink" title="VERSION"></a>VERSION</h5>IntelliJ IDEA 2017.3.4(Ultimate Edition)
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/02/07/software-activation/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -746,7 +752,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  900
+                  906
                 </span>
               
 
@@ -784,66 +790,15 @@
 
       
         
-          
-            <p>###</p>
-<h4 id="1-查看数据库版本"><a href="#1-查看数据库版本" class="headerlink" title="1.查看数据库版本"></a>1.查看数据库版本</h4><ul>
+          <h4 id="查看数据库版本"><a href="#查看数据库版本" class="headerlink" title="查看数据库版本"></a>查看数据库版本</h4><ul>
 <li><h5 id="v-version"><a href="#v-version" class="headerlink" title="v$version"></a>v$version</h5><p>SQL&gt; select * from v$version;<br><br><img src="/images/20180129093548.png" alt=""></p>
-</li>
-<li><h5 id="product-component-version"><a href="#product-component-version" class="headerlink" title="product_component_version"></a>product_component_version</h5><p>SQL&gt; select * from product_component_version;<br><br><img src="/images/20180129094432.png" alt=""></p>
-</li>
-</ul>
-<h4 id="2-获取年月日时分秒"><a href="#2-获取年月日时分秒" class="headerlink" title="2.获取年月日时分秒"></a>2.获取年月日时分秒</h4><ul>
-<li><p>获取年<br>select to_char(sysdate,’yyyy’) from dual; – 2018<br>select to_char(sysdate,’YYYY’) from dual; – 2018</p>
-</li>
-<li><p>获取月<br>select to_char(sysdate,’mm’) from dual; – 1<br>select to_char(sysdate,’MM’) from dual; – 1</p>
-</li>
-<li><p>获取日<br>select to_char(sysdate,’dd’) from dual; – 29<br>select to_char(sysdate,’DD’) from dual; – 29</p>
-</li>
-<li><p>获取时<br>select to_char(sysdate,’hh’) from dual; – 04<br>select to_char(sysdate,’HH’) from dual; – 04<br>select to_char(sysdate,’hh24’) from dual; – 16<br>select to_char(sysdate,’HH24’) from dual; – 16</p>
-</li>
-<li><p>获取分钟<br>select to_char(sysdate,’mi’) from dual; – 03<br>select to_char(sysdate,’MI’) from dual; – 03</p>
-</li>
-<li><p>获取秒<br>select to_char(sysdate,’ss’) from dual; – 40<br>select to_char(sysdate,’SS’) from dual; – 40</p>
-</li>
-<li><p>获取年月日时分秒<br>select to_char(sysdate,’yyyy-mm-dd hh:mi:ss’) from dual; – 2018-01-29 16:06:15<br>select to_char(sysdate,’yyyy-mm-dd hh24:mi:ss’) from dual; – 2018-01-29 16:06:15</p>
-<p><em>说明:</em><br>(1) 从上面的测试SQL可以看出yyyy, mm, dd, hh, mi, ss的大小写对于从oracle中获取年月日时分秒没有影响<br>(2) 对于获取小时分12小时和24小时的情况，如果你想显示下午的时间，你可以采用hh24, 这样就会显示类似于15:30而不是03:30</p>
-</li>
-</ul>
-<h4 id="3-获取一周前，一个月前，一年前的日期"><a href="#3-获取一周前，一个月前，一年前的日期" class="headerlink" title="3.获取一周前，一个月前，一年前的日期"></a>3.获取一周前，一个月前，一年前的日期</h4><ul>
-<li>获取当前时间一周前的时间<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select sysdate - interval &apos;7&apos; day from dual;</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<p><img src="/images/20180129101923.png" alt=""><br>类似的<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">-- 当前时间减去7分钟的时间</span><br><span class="line">select sysdate, sysdate - interval &apos;7&apos; minute from dual;</span><br><span class="line">-- 当前时间减去7小时的时间</span><br><span class="line">select sysdate, sysdate - interval &apos;7&apos; hour from dual;</span><br><span class="line">-- 当前时间减去7天的时间</span><br><span class="line">select sysdate, sysdate - interval &apos;7&apos; day from dual;</span><br><span class="line">-- 当前时间减去7月的时间</span><br><span class="line">select sysdate, sysdate - interval &apos;7&apos; month from dual;</span><br><span class="line">-- 当前时间减去7年的时间</span><br><span class="line">select sysdate, sysdate - interval &apos;7&apos; year from dual;</span><br><span class="line">-- 时间间隔乘以一个数字(16小时)</span><br><span class="line">select sysdate, sysdate - 8 *interval &apos;2&apos; hour from dual</span><br></pre></td></tr></table></figure></p>
-<p><img src="/images/20180129102848.png" alt=""></p>
-<h4 id="4-根据当前时间获取最近5年，最近6个月，最近30天的时间"><a href="#4-根据当前时间获取最近5年，最近6个月，最近30天的时间" class="headerlink" title="4.根据当前时间获取最近5年，最近6个月，最近30天的时间"></a>4.根据当前时间获取最近5年，最近6个月，最近30天的时间</h4><ul>
-<li>根据当前时间获取最近5年时间：(yyyy)<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">select level as &quot;level&quot;,to_char(sysdate,&apos;yyyy&apos;) - level + 1 as &quot;xAxisValue&quot; from dual</span><br><span class="line">connect by level &lt;= 5</span><br><span class="line">order by to_char(sysdate,&apos;yyyy&apos;) - level) + 1 asc</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<p><img src="/images/20180129103913.png" alt=""></p>
-<ul>
-<li><p>根据当前时间获取最近6个月的时间：(yyy-mm)</p>
-<p>先拆解一下SQL语句</p>
-<blockquote>
-<p><code>select trunc(sysdate, &#39;mm&#39;)+1 from dual;</code> – 2018/1/2</p>
-</blockquote>
-</li>
-</ul>
-<blockquote>
-<p><code>select to_char(trunc(sysdate, &#39;mm&#39;)+1, &#39;yyyy-mm&#39;) from dual;</code> – 2018-01</p>
-<p>`select to_date(to_char(trunc(sysdate, ‘mm’)+1, ‘yyyy-mm’),’yyyy-mm’) from dual;’ – 2018/1/1</p>
-<p><code>select add_months(to_date(to_char(trunc(sysdate, &#39;mm&#39;)+1, &#39;yyyy-mm&#39;),&#39;yyyy-mm&#39;),-1) from dual;</code>– 2017/12/1</p>
-<p>`select to_char(add_months(to_date(to_char(trunc(sysdate, ‘mm’)+1, ‘yyyy-mm’),’yyyy-mm’),-1),’yyyy-mm’) from dual;– 2017-12</p>
-</blockquote>
-<p> 执行SQL语句:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">select to_char(add_months(to_date(to_char(trunc(sysdate, &apos;mm&apos;)+1, &apos;yyyy-mm&apos;),&apos;yyyy-mm&apos;),-(rownum - 1)),&apos;yyyy-mm&apos;) as xAxisValue from dual</span><br><span class="line">connect by rownum &lt;=6</span><br><span class="line">order by xAxisValue asc</span><br></pre></td></tr></table></figure></p>
-<p>结果:<br><img src="/images/20180129111527.png" alt=""></p>
-<ul>
-<li>根据当前时间获取最近30天时间：(yyyy-mm-dd)<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">select to_char(day,&apos;yyyy-mm-dd&apos;) as &quot;xAxisValue&quot; from</span><br><span class="line">(select to_date(to_char(trunc(sysdate,&apos;dd&apos;),&apos;yyyy-mm-dd&apos;),&apos;yyyy-mm-dd&apos;) - rownnum + 1 as day from dual</span><br><span class="line">connect by rownum &lt;= 30) order by day asc</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<p>也可以根据输入启止时间来获取时间段内的天：如下为获取2017-06-10到2017-07-10时间段内的天(yyyy-mm-dd)<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">select to_char(day,&apos;yyyy-mm-dd&apos;) from</span><br><span class="line">(select to_date(to_char(trunc(to_date(&apos;2017-07-10&apos;,&apos;yyyy-mm-dd&apos;),&apos;dd&apos;),&apos;yyyy-mm-dd&apos;),&apos;yyyy-mm-dd&apos;) - rownum + 1 as day from dual</span><br><span class="line">connect by rownum &lt;= to_date(&apos;2017-07-10&apos;,&apos;yyyy-mm-dd&apos;) - to_date(&apos;2017-06-10&apos;,&apos;yyyy-mm-dd&apos;) + 1) order by day asc</span><br></pre></td></tr></table></figure></p>
-<h3 id="参考："><a href="#参考：" class="headerlink" title="参考："></a>参考：</h3><p>如何查看Oracle数据库版本: <a href="https://www.2cto.com/database/201209/155673.html" target="_blank" rel="noopener">https://www.2cto.com/database/201209/155673.html</a><br>oracle中获取年月日时分秒: <a href="http://blog.csdn.net/u012934325/article/details/52778136" target="_blank" rel="noopener">http://blog.csdn.net/u012934325/article/details/52778136</a><br>Oracle获取一周前，一个月前，一年前的日期:<br><a href="http://blog.csdn.net/siqilou/article/details/40887919" target="_blank" rel="noopener">http://blog.csdn.net/siqilou/article/details/40887919</a><br>Oracle根据当前时间获取最近5年，最近6个月，最近30天的时间：<a href="http://blog.csdn.net/maple_fix/article/details/74926226" target="_blank" rel="noopener">http://blog.csdn.net/maple_fix/article/details/74926226</a></p>
-
-          
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/02/06/oralce-date-operation/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1016,7 +971,7 @@
       
         
           
-            
+            <a id="more"></a>
           
         
       
@@ -1064,7 +1019,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/01/22/Interviewer's favorite volatile keyword/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/01/22/interviewer-favorite-volatile-keyword/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="phantomliu">
@@ -1083,7 +1038,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/01/22/Interviewer's favorite volatile keyword/" itemprop="url">面试官最爱的volatile关键字</a></h1>
+                <a class="post-title-link" href="/2018/01/22/interviewer-favorite-volatile-keyword/" itemprop="url">面试官最爱的volatile关键字</a></h1>
         
 
         <div class="post-meta">
@@ -1192,7 +1147,7 @@
           <p>在Java相关的岗位面试中，很多面试官都喜欢考察面试者对Java并发的了解程度，而以<strong>volatile</strong>关键字作为一个小的切入点，往往可以一问到底，把Java内存模型（JMM），Java并发编程的一些特性都牵扯出来，深入地话还可以考察JVM底层实现以及操作系统的相关知识。<br>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2018/01/22/Interviewer's favorite volatile keyword/#more" rel="contents">
+            <a class="btn" href="/2018/01/22/interviewer-favorite-volatile-keyword/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
