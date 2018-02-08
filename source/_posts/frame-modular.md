@@ -1,10 +1,11 @@
 ---
 title: 基础框架-Maven模块化
 date: 2018-01-20 15:08:32
-categories: Datadriver
+categories: datadriver
 tags:
      - black magic
      - fucking trick
+     - maven
 ---
 这个是maven分模块的工程。
 <!-- more -->
