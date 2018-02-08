@@ -1,14 +1,56 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title></title>
-    <url>%2F2018%2F02%2F07%2Foralce-date-operation%2F</url>
-    <content type="text"><![CDATA[###oralce数据库时间操作 ####1.查看数据库版本 #####v$versionSQL&gt; select * from v$version; #####product_component_versionSQL&gt; select * from product_component_version; ####2.获取年月日时分秒 获取年select to_char(sysdate,’yyyy’) from dual; – 2018select to_char(sysdate,’YYYY’) from dual; – 2018 获取月select to_char(sysdate,’mm’) from dual; – 1select to_char(sysdate,’MM’) from dual; – 1 获取日select to_char(sysdate,’dd’) from dual; – 29select to_char(sysdate,’DD’) from dual; – 29 获取时select to_char(sysdate,’hh’) from dual; – 04select to_char(sysdate,’HH’) from dual; – 04select to_char(sysdate,’hh24’) from dual; – 16select to_char(sysdate,’HH24’) from dual; – 16 获取分钟select to_char(sysdate,’mi’) from dual; – 03select to_char(sysdate,’MI’) from dual; – 03 获取秒select to_char(sysdate,’ss’) from dual; – 40select to_char(sysdate,’SS’) from dual; – 40 获取年月日时分秒select to_char(sysdate,’yyyy-mm-dd hh:mi:ss’) from dual; – 2018-01-29 16:06:15select to_char(sysdate,’yyyy-mm-dd hh24:mi:ss’) from dual; – 2018-01-29 16:06:15 说明:(1) 从上面的测试SQL可以看出yyyy, mm, dd, hh, mi, ss的大小写对于从oracle中获取年月日时分秒没有影响(2) 对于获取小时分12小时和24小时的情况，如果你想显示下午的时间，你可以采用hh24, 这样就会显示类似于15:30而不是03:30 ####3.获取一周前，一个月前，一年前的日期 获取当前时间一周前的时间1select sysdate - interval &apos;7&apos; day from dual; 类似的123456789101112-- 当前时间减去7分钟的时间select sysdate, sysdate - interval &apos;7&apos; minute from dual;-- 当前时间减去7小时的时间select sysdate, sysdate - interval &apos;7&apos; hour from dual;-- 当前时间减去7天的时间select sysdate, sysdate - interval &apos;7&apos; day from dual;-- 当前时间减去7月的时间select sysdate, sysdate - interval &apos;7&apos; month from dual;-- 当前时间减去7年的时间select sysdate, sysdate - interval &apos;7&apos; year from dual;-- 时间间隔乘以一个数字(16小时)select sysdate, sysdate - 8 *interval &apos;2&apos; hour from dual ####4.根据当前时间获取最近5年，最近6个月，最近30天的时间 根据当前时间获取最近5年时间：(yyyy)123select level as &quot;level&quot;,to_char(sysdate,&apos;yyyy&apos;) - level + 1 as &quot;xAxisValue&quot; from dualconnect by level &lt;= 5order by to_char(sysdate,&apos;yyyy&apos;) - level) + 1 asc 根据当前时间获取最近6个月的时间：(yyy-mm) 先拆解一下SQL语句 select trunc(sysdate, &#39;mm&#39;)+1 from dual; – 2018/1/2select to_char(trunc(sysdate, &#39;mm&#39;)+1, &#39;yyyy-mm&#39;) from dual; – 2018-01select to_date(to_char(trunc(sysdate, &#39;mm&#39;)+1, &#39;yyyy-mm&#39;),&#39;yyyy-mm&#39;) from dual;&#39; -- 2018/1/1select add_months(to_date(to_char(trunc(sysdate, ‘mm’)+1, ‘yyyy-mm’),’yyyy-mm’),-1) from dual;-- 2017/12/1select to_char(add_months(to_date(to_char(trunc(sysdate, ‘mm’)+1, ‘yyyy-mm’),’yyyy-mm’),-1),’yyyy-mm’) from dual;– 2017-12 执行SQL语句: 123select to_char(add_months(to_date(to_char(trunc(sysdate, &apos;mm&apos;)+1, &apos;yyyy-mm&apos;),&apos;yyyy-mm&apos;),-(rownum - 1)),&apos;yyyy-mm&apos;) as xAxisValue from dualconnect by rownum &lt;=6order by xAxisValue asc 结果: 根据当前时间获取最近30天时间：(yyyy-mm-dd)123select to_char(day,&apos;yyyy-mm-dd&apos;) as &quot;xAxisValue&quot; from(select to_date(to_char(trunc(sysdate,&apos;dd&apos;),&apos;yyyy-mm-dd&apos;),&apos;yyyy-mm-dd&apos;) - rownnum + 1 as day from dualconnect by rownum &lt;= 30) order by day asc 也可以根据输入启止时间来获取时间段内的天：如下为获取2017-06-10到2017-07-10时间段内的天(yyyy-mm-dd)123select to_char(day,&apos;yyyy-mm-dd&apos;) from(select to_date(to_char(trunc(to_date(&apos;2017-07-10&apos;,&apos;yyyy-mm-dd&apos;),&apos;dd&apos;),&apos;yyyy-mm-dd&apos;),&apos;yyyy-mm-dd&apos;) - rownum + 1 as day from dualconnect by rownum &lt;= to_date(&apos;2017-07-10&apos;,&apos;yyyy-mm-dd&apos;) - to_date(&apos;2017-06-10&apos;,&apos;yyyy-mm-dd&apos;) + 1) order by day asc ###参考：如何查看Oracle数据库版本: https://www.2cto.com/database/201209/155673.htmloracle中获取年月日时分秒: http://blog.csdn.net/u012934325/article/details/52778136Oracle获取一周前，一个月前，一年前的日期:http://blog.csdn.net/siqilou/article/details/40887919Oracle根据当前时间获取最近5年，最近6个月，最近30天的时间：http://blog.csdn.net/maple_fix/article/details/74926226]]></content>
+    <title><![CDATA[linkedHashMap 底层分析]]></title>
+    <url>%2F2018%2F02%2F08%2FlinkedHashMap-analysis%2F</url>
+    <content type="text"></content>
+      <categories>
+        <category>java</category>
+      </categories>
+      <tags>
+        <tag>jdk</tag>
+        <tag>Java</tag>
+        <tag>HashMap</tag>
+        <tag>LinkedHash</tag>
+      </tags>
   </entry>
   <entry>
-    <title><![CDATA[Hello World]]></title>
-    <url>%2F2018%2F02%2F07%2Fhello-world%2F</url>
-    <content type="text"><![CDATA[Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick StartCreate a new post1$ hexo new "My New Post" More info: Writing Run server1$ hexo server More info: Server Generate static files1$ hexo generate More info: Generating Deploy to remote sites1$ hexo deploy More info: Deployment]]></content>
+    <title><![CDATA[常用软件激活教程]]></title>
+    <url>%2F2018%2F02%2F07%2Fsoftware-activation%2F</url>
+    <content type="text"><![CDATA[IntelliJ IDEA Mybatis Plugin 激活REFER TOhttp://shawnho.me/2017/12/20/ideaagent/https://github.com/mrshawnho/ideaagent TIME2018-02-07 VERSIONMybatis Plugin 3.42IntelliJ IDEA 2017.3.4(Ultimate Edition)]]></content>
+      <categories>
+        <category>software</category>
+      </categories>
+      <tags>
+        <tag>software</tag>
+        <tag>activation</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[oralce数据库时间操作]]></title>
+    <url>%2F2018%2F02%2F06%2Foralce-date-operation%2F</url>
+    <content type="text"><![CDATA[### 1.查看数据库版本 v$versionSQL&gt; select * from v$version; product_component_versionSQL&gt; select * from product_component_version; 2.获取年月日时分秒 获取年select to_char(sysdate,’yyyy’) from dual; – 2018select to_char(sysdate,’YYYY’) from dual; – 2018 获取月select to_char(sysdate,’mm’) from dual; – 1select to_char(sysdate,’MM’) from dual; – 1 获取日select to_char(sysdate,’dd’) from dual; – 29select to_char(sysdate,’DD’) from dual; – 29 获取时select to_char(sysdate,’hh’) from dual; – 04select to_char(sysdate,’HH’) from dual; – 04select to_char(sysdate,’hh24’) from dual; – 16select to_char(sysdate,’HH24’) from dual; – 16 获取分钟select to_char(sysdate,’mi’) from dual; – 03select to_char(sysdate,’MI’) from dual; – 03 获取秒select to_char(sysdate,’ss’) from dual; – 40select to_char(sysdate,’SS’) from dual; – 40 获取年月日时分秒select to_char(sysdate,’yyyy-mm-dd hh:mi:ss’) from dual; – 2018-01-29 16:06:15select to_char(sysdate,’yyyy-mm-dd hh24:mi:ss’) from dual; – 2018-01-29 16:06:15 说明:(1) 从上面的测试SQL可以看出yyyy, mm, dd, hh, mi, ss的大小写对于从oracle中获取年月日时分秒没有影响(2) 对于获取小时分12小时和24小时的情况，如果你想显示下午的时间，你可以采用hh24, 这样就会显示类似于15:30而不是03:30 3.获取一周前，一个月前，一年前的日期 获取当前时间一周前的时间1select sysdate - interval &apos;7&apos; day from dual; 类似的123456789101112-- 当前时间减去7分钟的时间select sysdate, sysdate - interval &apos;7&apos; minute from dual;-- 当前时间减去7小时的时间select sysdate, sysdate - interval &apos;7&apos; hour from dual;-- 当前时间减去7天的时间select sysdate, sysdate - interval &apos;7&apos; day from dual;-- 当前时间减去7月的时间select sysdate, sysdate - interval &apos;7&apos; month from dual;-- 当前时间减去7年的时间select sysdate, sysdate - interval &apos;7&apos; year from dual;-- 时间间隔乘以一个数字(16小时)select sysdate, sysdate - 8 *interval &apos;2&apos; hour from dual 4.根据当前时间获取最近5年，最近6个月，最近30天的时间 根据当前时间获取最近5年时间：(yyyy)123select level as &quot;level&quot;,to_char(sysdate,&apos;yyyy&apos;) - level + 1 as &quot;xAxisValue&quot; from dualconnect by level &lt;= 5order by to_char(sysdate,&apos;yyyy&apos;) - level) + 1 asc 根据当前时间获取最近6个月的时间：(yyy-mm) 先拆解一下SQL语句 select trunc(sysdate, &#39;mm&#39;)+1 from dual; – 2018/1/2 select to_char(trunc(sysdate, &#39;mm&#39;)+1, &#39;yyyy-mm&#39;) from dual; – 2018-01 `select to_date(to_char(trunc(sysdate, ‘mm’)+1, ‘yyyy-mm’),’yyyy-mm’) from dual;’ – 2018/1/1 select add_months(to_date(to_char(trunc(sysdate, &#39;mm&#39;)+1, &#39;yyyy-mm&#39;),&#39;yyyy-mm&#39;),-1) from dual;– 2017/12/1 `select to_char(add_months(to_date(to_char(trunc(sysdate, ‘mm’)+1, ‘yyyy-mm’),’yyyy-mm’),-1),’yyyy-mm’) from dual;– 2017-12 执行SQL语句:123select to_char(add_months(to_date(to_char(trunc(sysdate, &apos;mm&apos;)+1, &apos;yyyy-mm&apos;),&apos;yyyy-mm&apos;),-(rownum - 1)),&apos;yyyy-mm&apos;) as xAxisValue from dualconnect by rownum &lt;=6order by xAxisValue asc 结果: 根据当前时间获取最近30天时间：(yyyy-mm-dd)123select to_char(day,&apos;yyyy-mm-dd&apos;) as &quot;xAxisValue&quot; from(select to_date(to_char(trunc(sysdate,&apos;dd&apos;),&apos;yyyy-mm-dd&apos;),&apos;yyyy-mm-dd&apos;) - rownnum + 1 as day from dualconnect by rownum &lt;= 30) order by day asc 也可以根据输入启止时间来获取时间段内的天：如下为获取2017-06-10到2017-07-10时间段内的天(yyyy-mm-dd)123select to_char(day,&apos;yyyy-mm-dd&apos;) from(select to_date(to_char(trunc(to_date(&apos;2017-07-10&apos;,&apos;yyyy-mm-dd&apos;),&apos;dd&apos;),&apos;yyyy-mm-dd&apos;),&apos;yyyy-mm-dd&apos;) - rownum + 1 as day from dualconnect by rownum &lt;= to_date(&apos;2017-07-10&apos;,&apos;yyyy-mm-dd&apos;) - to_date(&apos;2017-06-10&apos;,&apos;yyyy-mm-dd&apos;) + 1) order by day asc 参考：如何查看Oracle数据库版本: https://www.2cto.com/database/201209/155673.htmloracle中获取年月日时分秒: http://blog.csdn.net/u012934325/article/details/52778136Oracle获取一周前，一个月前，一年前的日期:http://blog.csdn.net/siqilou/article/details/40887919Oracle根据当前时间获取最近5年，最近6个月，最近30天的时间：http://blog.csdn.net/maple_fix/article/details/74926226]]></content>
+      <categories>
+        <category>software</category>
+      </categories>
+      <tags>
+        <tag>date</tag>
+        <tag>oracle</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[常用工具集]]></title>
+    <url>%2F2018%2F02%2F06%2Ftoolkit%2F</url>
+    <content type="text"></content>
+      <categories>
+        <category>software</category>
+      </categories>
+      <tags>
+        <tag>launchy</tag>
+        <tag>weex</tag>
+        <tag>everything</tag>
+        <tag>listary</tag>
+      </tags>
   </entry>
   <entry>
     <title><![CDATA[面试官最爱的volatile关键字]]></title>
@@ -28,11 +70,12 @@
     <url>%2F2018%2F01%2F20%2Fframe-modular%2F</url>
     <content type="text"><![CDATA[这个是maven分模块的工程。 IDE设置 git clone 代码 mvn install 在工作目录中使用mvn eclipse:eclipse[Eclipse]或mvn idea:idea[Intellij IDEA]初始化工程 在IDE中导入已有工程 打包与运行 打包jar命令：mvn package -P dev[开发环境配置]，mvn package -P online[生产环境配置]其中，开发环境dev的配置位于src/main/resources/dev中，生产环境online的配置位于src/main/resources/online中默认为dev开发环境的配置 运行其中datadriver-web中是war包，该包中包含有其他模块的jar在lib目录中]]></content>
       <categories>
-        <category>Datadriver</category>
+        <category>datadriver</category>
       </categories>
       <tags>
         <tag>black magic</tag>
         <tag>fucking trick</tag>
+        <tag>maven</tag>
       </tags>
   </entry>
   <entry>
@@ -46,5 +89,10 @@
         <tag>black magic</tag>
         <tag>fucking trick</tag>
       </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Hello World]]></title>
+    <url>%2F2018%2F01%2F19%2Fhello-world%2F</url>
+    <content type="text"><![CDATA[Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick StartCreate a new post1$ hexo new "My New Post" More info: Writing Run server1$ hexo server More info: Server Generate static files1$ hexo generate More info: Generating Deploy to remote sites1$ hexo deploy More info: Deployment]]></content>
   </entry>
 </search>
