@@ -13,6 +13,7 @@
     
     
     
+    
     <title>乐观锁与悲观锁的实际应用 | phantomliu&#39;s blog</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
@@ -22,10 +23,10 @@
     <meta name="keywords" content>
     <meta property="og:type" content="article">
 <meta property="og:title" content="乐观锁与悲观锁的实际应用">
-<meta property="og:url" content="http://yoursite.com/2018/02/11/optimistic-pessimistic-lock/index.html">
+<meta property="og:url" content="https://liujings8.github.io/2018/02/11/optimistic-pessimistic-lock/index.html">
 <meta property="og:site_name" content="phantomliu&#39;s blog">
-<meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-02-11T09:27:43.855Z">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-05-05T17:45:46.351Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="乐观锁与悲观锁的实际应用">
     
@@ -51,11 +52,11 @@
     <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
       <div class="brand">
         <a href="/" class="avatar waves-effect waves-circle waves-light">
-          <img src="/img/avatar.jpg">
+          <img src="/images/harmonica.jpg">
         </a>
         <hgroup class="introduce">
           <h5 class="nickname">phantomliu</h5>
-          <a href="mailto:634206017@qq.com" title="634206017@qq.com" class="mail">634206017@qq.com</a>
+          <a href="mailto:liujingsong1126@gmail.com" title="liujingsong1126@gmail.com" class="mail">liujingsong1126@gmail.com</a>
         </hgroup>
       </div>
     </div>
@@ -65,7 +66,7 @@
             <li class="waves-block waves-effect">
               <a href="/">
                 <i class="icon icon-lg icon-home"></i>
-                主页
+                Home
               </a>
             </li>
         
@@ -91,23 +92,9 @@
             </li>
         
             <li class="waves-block waves-effect">
-              <a href="https://github.com/yscoder" target="_blank">
+              <a href="https://github.com/liujings8" target="_blank">
                 <i class="icon icon-lg icon-github"></i>
                 Github
-              </a>
-            </li>
-        
-            <li class="waves-block waves-effect">
-              <a href="http://www.weibo.com/ysweb" target="_blank">
-                <i class="icon icon-lg icon-weibo"></i>
-                Weibo
-              </a>
-            </li>
-        
-            <li class="waves-block waves-effect">
-              <a href="/custom">
-                <i class="icon icon-lg icon-link"></i>
-                测试
               </a>
             </li>
         
@@ -128,7 +115,7 @@
             <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
                 <i class="icon icon-lg icon-chevron-left"></i>
             </a>
-            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="Search">
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
             <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
                 <i class="icon icon-lg icon-search"></i>
             </a>
@@ -164,6 +151,7 @@
 
 <div class="container body-wrap">
     
+
 <article id="post-optimistic-pessimistic-lock" class="post-article article-type-post fade" itemprop="blogPost">
 
     <div class="post-card">
@@ -186,30 +174,28 @@
         </div>
 
         <blockquote class="post-copyright">
+    
     <div class="content">
         
 <span class="post-time">
-    Last updated: <time datetime="2018-02-11T09:27:43.855Z" itemprop="dateUpdated">2018-02-11 17:27:43</time>
+    最后更新时间：<time datetime="2019-05-05T17:45:46.351Z" itemprop="dateUpdated">2019-05-06 01:45:46</time>
 </span><br>
 
 
         
-        这里可以写作者留言，标签和 hexo 中所有变量及辅助函数等均可调用，示例：<a href="/2018/02/11/optimistic-pessimistic-lock/" target="_blank" rel="external">http://yoursite.com/2018/02/11/optimistic-pessimistic-lock/</a>
+        这里可以写作者留言，标签和 hexo 中所有变量及辅助函数等均可调用，示例：<a href="/2018/02/11/optimistic-pessimistic-lock/" target="_blank" rel="external">https://liujings8.github.io/2018/02/11/optimistic-pessimistic-lock/</a>
         
     </div>
+    
     <footer>
-        <a href="http://yoursite.com">
-            <img src="/img/avatar.jpg" alt="phantomliu">
+        <a href="https://liujings8.github.io">
+            <img src="/images/harmonica.jpg" alt="phantomliu">
             phantomliu
         </a>
     </footer>
 </blockquote>
 
         
-<div class="page-reward">
-    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
-</div>
-
 
 
         <div class="post-footer">
@@ -222,7 +208,7 @@
 <div class="page-share" id="pageShare">
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2018/02/11/optimistic-pessimistic-lock/&title=《乐观锁与悲观锁的实际应用》 — phantomliu's blog&pic=http://yoursite.com/img/avatar.jpg" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://liujings8.github.io/2018/02/11/optimistic-pessimistic-lock/&title=《乐观锁与悲观锁的实际应用》 — phantomliu's blog&pic=https://liujings8.github.io/images/harmonica.jpg" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -232,22 +218,22 @@
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2018/02/11/optimistic-pessimistic-lock/&title=《乐观锁与悲观锁的实际应用》 — phantomliu's blog&source=" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://liujings8.github.io/2018/02/11/optimistic-pessimistic-lock/&title=《乐观锁与悲观锁的实际应用》 — phantomliu's blog&source=" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
       <li>
-        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2018/02/11/optimistic-pessimistic-lock/" data-title=" Facebook">
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://liujings8.github.io/2018/02/11/optimistic-pessimistic-lock/" data-title=" Facebook">
           <i class="icon icon-facebook"></i>
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《乐观锁与悲观锁的实际应用》 — phantomliu's blog&url=http://yoursite.com/2018/02/11/optimistic-pessimistic-lock/&via=http://yoursite.com" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《乐观锁与悲观锁的实际应用》 — phantomliu's blog&url=https://liujings8.github.io/2018/02/11/optimistic-pessimistic-lock/&via=https://liujings8.github.io" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
       <li>
-        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://yoursite.com/2018/02/11/optimistic-pessimistic-lock/" data-title=" Google+">
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://liujings8.github.io/2018/02/11/optimistic-pessimistic-lock/" data-title=" Google+">
           <i class="icon icon-google-plus"></i>
         </a>
       </li>
@@ -304,32 +290,13 @@
 
 
 
-</article>
 
-<div id="reward" class="page-modal reward-lay">
-    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
-    <h3 class="reward-title">
-        <i class="icon icon-quote-left"></i>
-        谢谢大爷~
-        <i class="icon icon-quote-right"></i>
-    </h3>
-    <div class="reward-content">
-        
-        <div class="reward-code">
-            <img id="rewardCode" src="/img/wechat.jpg" alt="打赏二维码">
-        </div>
-        
-        <label class="reward-toggle">
-            <input id="rewardToggle" type="checkbox" class="reward-toggle-check" data-wechat="/img/wechat.jpg" data-alipay="/img/alipay.jpg">
-            <div class="reward-toggle-ctrol">
-                <span class="reward-toggle-item wechat">微信</span>
-                <span class="reward-toggle-label"></span>
-                <span class="reward-toggle-item alipay">支付宝</span>
-            </div>
-        </label>
-        
-    </div>
-</div>
+
+
+
+
+
+</article>
 
 
 
@@ -352,7 +319,7 @@
             
                 <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
             
-            <span>This blog is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.</span>
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
         </p>
     </div>
     <div class="bottom">
@@ -374,7 +341,7 @@
 <div class="global-share" id="globalShare">
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2018/02/11/optimistic-pessimistic-lock/&title=《乐观锁与悲观锁的实际应用》 — phantomliu's blog&pic=http://yoursite.com/img/avatar.jpg" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://liujings8.github.io/2018/02/11/optimistic-pessimistic-lock/&title=《乐观锁与悲观锁的实际应用》 — phantomliu's blog&pic=https://liujings8.github.io/images/harmonica.jpg" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -384,22 +351,22 @@
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2018/02/11/optimistic-pessimistic-lock/&title=《乐观锁与悲观锁的实际应用》 — phantomliu's blog&source=" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://liujings8.github.io/2018/02/11/optimistic-pessimistic-lock/&title=《乐观锁与悲观锁的实际应用》 — phantomliu's blog&source=" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
       <li>
-        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2018/02/11/optimistic-pessimistic-lock/" data-title=" Facebook">
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://liujings8.github.io/2018/02/11/optimistic-pessimistic-lock/" data-title=" Facebook">
           <i class="icon icon-facebook"></i>
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《乐观锁与悲观锁的实际应用》 — phantomliu's blog&url=http://yoursite.com/2018/02/11/optimistic-pessimistic-lock/&via=http://yoursite.com" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《乐观锁与悲观锁的实际应用》 — phantomliu's blog&url=https://liujings8.github.io/2018/02/11/optimistic-pessimistic-lock/&via=https://liujings8.github.io" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
       <li>
-        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://yoursite.com/2018/02/11/optimistic-pessimistic-lock/" data-title=" Google+">
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://liujings8.github.io/2018/02/11/optimistic-pessimistic-lock/" data-title=" Google+">
           <i class="icon icon-google-plus"></i>
         </a>
       </li>
@@ -410,7 +377,7 @@
 <div class="page-modal wx-share" id="wxShare">
     <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
-    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACJklEQVR42u3aMXLDMAwEQP//00rrRvIdKGfG1LLyyInFZYEBCLxe8Tre1tnz92+Pk/X+bf6W2xYGBsbPMo7Ldb3ddhNHvPK9YWBgPIdx9srrzyvhePau0+cYGBgYQZDNt5uwMTAwMNYZyZPr50lyiYGBgdEWsW0iOLto+3otjoGB8YOMPBT+/+ev9DcwMDB+inGUa1a+XgfrY3lhYGDszcgDXN7UzFO3lYCLgYHxNMb1T7dF4ywEt83ROpPFwMDYgjG8jg9CZHuVljcJPnQ5MDAwNmK0V/zJUNcsWcwDfZThYmBgbMFoX7ZSys6CaTRYhoGBsTUjCXBtKTs7mhuCNQYGxtaMotIt/zKHrVzGYWBgPI2RFK4rAxazoykaBhgYGJsyZiXlbNPtYRVJKgYGxmMYbVsx+Z2cmiSORS2OgYGxHSNP+9ohjDwELxWxGBgYmzLyS/mWNzuOqNpe6S1gYGBsxFhJCtsrs7Z5+aGngYGBsR2jrQFnIxqzIbM86GNgYDyBsV6s3jVI0R7Hh1ocAwNjO8ZsnCJvUq4E92hhYGA8hnFvk7JNKNt9YmBgPIFxlKttGKykksUxYWBgbM24LWbHJWvy+uHMCAYGxtaM2VDF7Fp/5cii5iUGBsbWjFnonLUBVlK9qAeLgYGBUQ54zbbVPsfAwMBoG5xto7SlnrYHMDAwtma0zYD8Nfn4RXuph4GB8RzGLIFb6TbUV2kL/4WBgfHjjD82jNsZsWRQ7AAAAABJRU5ErkJggg==" alt="微信分享二维码">
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACuUlEQVR42u3aQXKDMBAEwPz/08nVKQcys5IoH5qTK8ag5iA2s/v1FR/fL0dyzvvxes7V+VfnvH/efODh4eEtLP3+lrNFvy/r/vpXmOQufzwCPDw8vGO8qx012ZR3fZs81nzNeHh4eJ/MO83O14OHh4f3mbz78/Ny+b7gXlkDHh4e3jO8Nm7It/J2ufnj3py14OHh4cW8tjj+hM9H+nt4eHh4y131vPDNr5aMI7RNuMt74eHh4R3g5RvubFwgL3P3noOHh4d3jre+NeexbIufDWb9+jseHh7eYV47GpUnACuFeJswFEvBw8PDW+DlpXObnd4X3+0V6gYYHh4e3jFeHrDuLZR3vWAur4OHh4d3gHe/0CSAmL1O8kGBza8HPDw8vE28BNkGCkmTLF/ihvYYHh4e3iZevqyVjXt90KqehsDDw8M7zGuD1F1DAEnw0Tbn/hgdwMPDw9vKa0emZmMEefyasNsXGB4eHt6TvPbFkIcFSTk+GykoOml4eHh4o1+tXHSleTYMF9ohAzw8PLzHeXnJ2y4ov8KssP6VteDh4eEd5uW3XCmX2zGC/B8APDw8vNO89cJ3JbrNI91ZZIyHh4d3gpe0smZNqZWxg1nbDA8PD+9J3q6GVttUG4azszACDw8PbxMv39ZXCt/2ldCGEf/8Cg8PD+8YLx8gmJHqDb08oqwFDw8Pbyuv3cTbgju5zsrju3yB4eHh4R3mJdt0G9S2oXDe9KrbYHh4eHjLvO/yODFAsB4NX36Lh4eHd4DXbrizxn8ST7SDWbOmGh4eHt4uXrvoFpDHDcl9kyvg4eHhPcPLC9zZSFb+YtjW+sLDw8P7GF77OskfzezMOqXGw8PDe5w3C1jbxn/7QKOhKzw8PLytvPyWeaupjSfyZlseUuDh4eGd4K38wz8bLMgL7hPhBR4eHt4C7wcAcnOoVTI6zwAAAABJRU5ErkJggg==" alt="微信分享二维码">
 </div>
 
 
@@ -418,7 +385,7 @@
 
     <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
 <script>
-var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
 
 
 </script>
@@ -450,7 +417,7 @@ var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
 
 
 
-<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 
 
 

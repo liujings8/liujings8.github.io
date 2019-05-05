@@ -13,6 +13,7 @@
     
     
     
+    
     <title>面试官最爱的volatile关键字 | phantomliu&#39;s blog</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
@@ -24,17 +25,17 @@
 <meta name="keywords" content="black magic,fucking trick,jdk">
 <meta property="og:type" content="article">
 <meta property="og:title" content="面试官最爱的volatile关键字">
-<meta property="og:url" content="http://yoursite.com/2018/01/22/interviewer-favorite-volatile-keyword/index.html">
+<meta property="og:url" content="https://liujings8.github.io/2018/01/22/interviewer-favorite-volatile-keyword/index.html">
 <meta property="og:site_name" content="phantomliu&#39;s blog">
 <meta property="og:description" content="在Java相关的岗位面试中，很多面试官都喜欢考察面试者对Java并发的了解程度，而以volatile关键字作为一个小的切入点，往往可以一问到底，把Java内存模型（JMM），Java并发编程的一些特性都牵扯出来，深入地话还可以考察JVM底层实现以及操作系统的相关知识。">
-<meta property="og:locale" content="default">
-<meta property="og:image" content="http://yoursite.com/images/1603a6fae545a200.png">
-<meta property="og:image" content="http://yoursite.com/images/1603ac14eb04b21e.png">
-<meta property="og:updated_time" content="2018-02-07T10:44:16.194Z">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://liujings8.github.io/images/1603a6fae545a200.png">
+<meta property="og:image" content="https://liujings8.github.io/images/1603ac14eb04b21e.png">
+<meta property="og:updated_time" content="2019-05-05T17:45:32.926Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="面试官最爱的volatile关键字">
 <meta name="twitter:description" content="在Java相关的岗位面试中，很多面试官都喜欢考察面试者对Java并发的了解程度，而以volatile关键字作为一个小的切入点，往往可以一问到底，把Java内存模型（JMM），Java并发编程的一些特性都牵扯出来，深入地话还可以考察JVM底层实现以及操作系统的相关知识。">
-<meta name="twitter:image" content="http://yoursite.com/images/1603a6fae545a200.png">
+<meta name="twitter:image" content="https://liujings8.github.io/images/1603a6fae545a200.png">
     
         <link rel="alternate" type="application/atom+xml" title="phantomliu&#39;s blog" href="/atom.xml">
     
@@ -58,11 +59,11 @@
     <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
       <div class="brand">
         <a href="/" class="avatar waves-effect waves-circle waves-light">
-          <img src="/img/avatar.jpg">
+          <img src="/images/harmonica.jpg">
         </a>
         <hgroup class="introduce">
           <h5 class="nickname">phantomliu</h5>
-          <a href="mailto:634206017@qq.com" title="634206017@qq.com" class="mail">634206017@qq.com</a>
+          <a href="mailto:liujingsong1126@gmail.com" title="liujingsong1126@gmail.com" class="mail">liujingsong1126@gmail.com</a>
         </hgroup>
       </div>
     </div>
@@ -72,7 +73,7 @@
             <li class="waves-block waves-effect">
               <a href="/">
                 <i class="icon icon-lg icon-home"></i>
-                主页
+                Home
               </a>
             </li>
         
@@ -98,23 +99,9 @@
             </li>
         
             <li class="waves-block waves-effect">
-              <a href="https://github.com/yscoder" target="_blank">
+              <a href="https://github.com/liujings8" target="_blank">
                 <i class="icon icon-lg icon-github"></i>
                 Github
-              </a>
-            </li>
-        
-            <li class="waves-block waves-effect">
-              <a href="http://www.weibo.com/ysweb" target="_blank">
-                <i class="icon icon-lg icon-weibo"></i>
-                Weibo
-              </a>
-            </li>
-        
-            <li class="waves-block waves-effect">
-              <a href="/custom">
-                <i class="icon icon-lg icon-link"></i>
-                测试
               </a>
             </li>
         
@@ -135,7 +122,7 @@
             <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
                 <i class="icon icon-lg icon-chevron-left"></i>
             </a>
-            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="Search">
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
             <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
                 <i class="icon icon-lg icon-search"></i>
             </a>
@@ -174,12 +161,13 @@
 <div class="container body-wrap">
     
     <aside class="post-widget">
-        <nav class="post-toc-wrap" id="post-toc">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
             <h4>TOC</h4>
             <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#面试官-Java并发这块了解的怎么样？说说你对volatile关键字的理解"><span class="post-toc-number">1.</span> <span class="post-toc-text">面试官: Java并发这块了解的怎么样？说说你对volatile关键字的理解</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#面试官-能不能详细说下什么是内存可见性，什么又是重排序呢？"><span class="post-toc-number">2.</span> <span class="post-toc-text">面试官: 能不能详细说下什么是内存可见性，什么又是重排序呢？</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#面试官：那你具体说说这三个特性呢？"><span class="post-toc-number">3.</span> <span class="post-toc-text">面试官：那你具体说说这三个特性呢？</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#面试官：volatile关键字如何满足并发编程的三大特性的？"><span class="post-toc-number">4.</span> <span class="post-toc-text">面试官：volatile关键字如何满足并发编程的三大特性的？</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#面试官：volatile的两点内存语义能保证可见性和有序性，但是能保证原子性吗？"><span class="post-toc-number">5.</span> <span class="post-toc-text">面试官：volatile的两点内存语义能保证可见性和有序性，但是能保证原子性吗？</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#面试官：说的还可以，那你知道volatile底层的实现机制？"><span class="post-toc-number">6.</span> <span class="post-toc-text">面试官：说的还可以，那你知道volatile底层的实现机制？</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#面试官：-你在哪里会使用到volatile，举两个例子呢？"><span class="post-toc-number">7.</span> <span class="post-toc-text">面试官： 你在哪里会使用到volatile，举两个例子呢？</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#面试官：-来给我们说说几种单例模式的写法吧，还有上面这种用法，你再详细说说呢？"><span class="post-toc-number">8.</span> <span class="post-toc-text">面试官： 来给我们说说几种单例模式的写法吧，还有上面这种用法，你再详细说说呢？</span></a></li></ol>
         </nav>
     </aside>
-    
+
+
 <article id="post-interviewer-favorite-volatile-keyword" class="post-article article-type-post fade" itemprop="blogPost">
 
     <div class="post-card">
@@ -279,30 +267,28 @@
         </div>
 
         <blockquote class="post-copyright">
+    
     <div class="content">
         
 <span class="post-time">
-    Last updated: <time datetime="2018-02-07T10:44:16.194Z" itemprop="dateUpdated">2018-02-07 18:44:16</time>
+    最后更新时间：<time datetime="2019-05-05T17:45:32.926Z" itemprop="dateUpdated">2019-05-06 01:45:32</time>
 </span><br>
 
 
         
-        这里可以写作者留言，标签和 hexo 中所有变量及辅助函数等均可调用，示例：<a href="/2018/01/22/interviewer-favorite-volatile-keyword/" target="_blank" rel="external">http://yoursite.com/2018/01/22/interviewer-favorite-volatile-keyword/</a>
+        这里可以写作者留言，标签和 hexo 中所有变量及辅助函数等均可调用，示例：<a href="/2018/01/22/interviewer-favorite-volatile-keyword/" target="_blank" rel="external">https://liujings8.github.io/2018/01/22/interviewer-favorite-volatile-keyword/</a>
         
     </div>
+    
     <footer>
-        <a href="http://yoursite.com">
-            <img src="/img/avatar.jpg" alt="phantomliu">
+        <a href="https://liujings8.github.io">
+            <img src="/images/harmonica.jpg" alt="phantomliu">
             phantomliu
         </a>
     </footer>
 </blockquote>
 
         
-<div class="page-reward">
-    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
-</div>
-
 
 
         <div class="post-footer">
@@ -317,7 +303,7 @@
 <div class="page-share" id="pageShare">
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2018/01/22/interviewer-favorite-volatile-keyword/&title=《面试官最爱的volatile关键字》 — phantomliu's blog&pic=http://yoursite.com/img/avatar.jpg" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://liujings8.github.io/2018/01/22/interviewer-favorite-volatile-keyword/&title=《面试官最爱的volatile关键字》 — phantomliu's blog&pic=https://liujings8.github.io/images/harmonica.jpg" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -327,22 +313,22 @@
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2018/01/22/interviewer-favorite-volatile-keyword/&title=《面试官最爱的volatile关键字》 — phantomliu's blog&source=在Java相关的岗位面试中，很多面试官都喜欢考察面试者对Java并发的了解程度，而以volatile关键字作为一个小的切入点，往往可以一问到底，把Java..." data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://liujings8.github.io/2018/01/22/interviewer-favorite-volatile-keyword/&title=《面试官最爱的volatile关键字》 — phantomliu's blog&source=在Java相关的岗位面试中，很多面试官都喜欢考察面试者对Java并发的了解程度，而以volatile关键字作为一个小的切入点，往往可以一问到底，把Java..." data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
       <li>
-        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2018/01/22/interviewer-favorite-volatile-keyword/" data-title=" Facebook">
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://liujings8.github.io/2018/01/22/interviewer-favorite-volatile-keyword/" data-title=" Facebook">
           <i class="icon icon-facebook"></i>
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《面试官最爱的volatile关键字》 — phantomliu's blog&url=http://yoursite.com/2018/01/22/interviewer-favorite-volatile-keyword/&via=http://yoursite.com" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《面试官最爱的volatile关键字》 — phantomliu's blog&url=https://liujings8.github.io/2018/01/22/interviewer-favorite-volatile-keyword/&via=https://liujings8.github.io" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
       <li>
-        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://yoursite.com/2018/01/22/interviewer-favorite-volatile-keyword/" data-title=" Google+">
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://liujings8.github.io/2018/01/22/interviewer-favorite-volatile-keyword/" data-title=" Google+">
           <i class="icon icon-google-plus"></i>
         </a>
       </li>
@@ -399,32 +385,13 @@
 
 
 
-</article>
 
-<div id="reward" class="page-modal reward-lay">
-    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
-    <h3 class="reward-title">
-        <i class="icon icon-quote-left"></i>
-        谢谢大爷~
-        <i class="icon icon-quote-right"></i>
-    </h3>
-    <div class="reward-content">
-        
-        <div class="reward-code">
-            <img id="rewardCode" src="/img/wechat.jpg" alt="打赏二维码">
-        </div>
-        
-        <label class="reward-toggle">
-            <input id="rewardToggle" type="checkbox" class="reward-toggle-check" data-wechat="/img/wechat.jpg" data-alipay="/img/alipay.jpg">
-            <div class="reward-toggle-ctrol">
-                <span class="reward-toggle-item wechat">微信</span>
-                <span class="reward-toggle-label"></span>
-                <span class="reward-toggle-item alipay">支付宝</span>
-            </div>
-        </label>
-        
-    </div>
-</div>
+
+
+
+
+
+</article>
 
 
 
@@ -447,7 +414,7 @@
             
                 <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
             
-            <span>This blog is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.</span>
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
         </p>
     </div>
     <div class="bottom">
@@ -469,7 +436,7 @@
 <div class="global-share" id="globalShare">
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2018/01/22/interviewer-favorite-volatile-keyword/&title=《面试官最爱的volatile关键字》 — phantomliu's blog&pic=http://yoursite.com/img/avatar.jpg" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://liujings8.github.io/2018/01/22/interviewer-favorite-volatile-keyword/&title=《面试官最爱的volatile关键字》 — phantomliu's blog&pic=https://liujings8.github.io/images/harmonica.jpg" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -479,22 +446,22 @@
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2018/01/22/interviewer-favorite-volatile-keyword/&title=《面试官最爱的volatile关键字》 — phantomliu's blog&source=在Java相关的岗位面试中，很多面试官都喜欢考察面试者对Java并发的了解程度，而以volatile关键字作为一个小的切入点，往往可以一问到底，把Java..." data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://liujings8.github.io/2018/01/22/interviewer-favorite-volatile-keyword/&title=《面试官最爱的volatile关键字》 — phantomliu's blog&source=在Java相关的岗位面试中，很多面试官都喜欢考察面试者对Java并发的了解程度，而以volatile关键字作为一个小的切入点，往往可以一问到底，把Java..." data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
       <li>
-        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2018/01/22/interviewer-favorite-volatile-keyword/" data-title=" Facebook">
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://liujings8.github.io/2018/01/22/interviewer-favorite-volatile-keyword/" data-title=" Facebook">
           <i class="icon icon-facebook"></i>
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《面试官最爱的volatile关键字》 — phantomliu's blog&url=http://yoursite.com/2018/01/22/interviewer-favorite-volatile-keyword/&via=http://yoursite.com" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《面试官最爱的volatile关键字》 — phantomliu's blog&url=https://liujings8.github.io/2018/01/22/interviewer-favorite-volatile-keyword/&via=https://liujings8.github.io" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
       <li>
-        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://yoursite.com/2018/01/22/interviewer-favorite-volatile-keyword/" data-title=" Google+">
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://liujings8.github.io/2018/01/22/interviewer-favorite-volatile-keyword/" data-title=" Google+">
           <i class="icon icon-google-plus"></i>
         </a>
       </li>
@@ -505,7 +472,7 @@
 <div class="page-modal wx-share" id="wxShare">
     <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
-    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACtUlEQVR42u3aQW7DMAwEwPz/0+25KGzvUlKSw/hUuIalcQGRJfl6xdfPxZX/9v+TV6vcr/46ceHh4eFt2vr9FpPl75/M33P/me7fiYeHh3eOl78uObhzxv1HyT/x5X08PDy8L+Dl6fKu5+/fg4eHh/fNvF3PPyTBt1UFPDw8vO/h5YXaWXliuLl31lrw8PDwYt7Kofypn4/09/Dw8PCWu+r54dsGjF2J+MMO8fDw8A7w2kM5T3lzUt5ym6X7eHh4eO/nrQSGtqyQD2AVfwA8PDy8rbyVFlS7ibZM3AaVh4Xx8PDwDvOSTcxaXLNkPQ9af57Ew8PDO8BrF9s7nLrCzgdY8fDw8E7z2qGBvMy68rY2MODh4eGd4+XJdFsImLWv2pJxHRLw8PDwtlY+14/49fQ3LwfXxWg8PDy8TbyE1KbdecqbgxMSHh4e3vt5yZ12mRkgD0sPHxEPDw/vAG9lxGoWDGbttOSjFzA8PDy8BV67QBIk1ocS7oNHEhL+zJTh4eHhvZ03iy2zckYeGKLEGg8PD+8Ab9dGZy2u4XFfroiHh4e3l7crXc6P6fZOO5SAh4eHd5qXt6byAu4sMLTDWEWJGQ8PD28rrz2+2yLCegjJ0/3LMi4eHh7eAV6+0dlgVh5yVgq4S7MJeHh4eDFvtrm27JsUPtZDRfE3xMPDw1vgJe2lfCt5OJmNXtVhBg8PD+8Ar02mc3ySsu/iRXEPDw8PbxPvp7zagkI+CjB7Zhgx8PDw8BZ4s7Q1b+23YWOl3bXExsPDwyt5bYlh16BA8vlyRvQfAx4eHt5WXnsQt4d1W6rI41gUGPDw8PA+xJu189sCbttae0jQ8fDw8D7Km5UG2sM9SbKLEIKHh4d3jNcWI5JywOzOShn3MjDg4eHhbeXNRpra1n5e6m2RG4YJ8PDw8FLeL1s1VLlE4CbuAAAAAElFTkSuQmCC" alt="微信分享二维码">
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACrklEQVR42u3aQXLjMAwEQP//0841VRtZA4DQ+tA6pSxbZOtAMAO+XvH1/nVVP8/vvi+u33dfGxceHh7eYOrJwP/+9uo7CeBq6tXnXM0QDw8Pb493taJ+Hr46ZFIkevO5/BwPDw/vC3iTSeRb5N5v8fDw8L6ZV53E3hPw8PDw/hfvVIS6UU4+P+1Y1oKHh4cX8+aTfv7vlf4eHh4e3rirfiqKrS7ZSWmJZouHh4e3wMsX3GRDnG9z8+8kocnNPPHw8PCO8k4dpSpHqx+fnI97U7rw8PDwFniTJlNv0R8dPO3FE3h4eHiP83ohRUKal6LkdePh4eFt83pt/uqyngS71agiKgx4eHh4R3nVyCAvDPnUF8MIPDw8vKMxbm973TsEkEcYvdZXVPHw8PDwxrxkEa9uwfMyMykVN8ExHh4e3gKvvNTGE6oeNei9jmZLDA8PD2/AyxfiajOs+oKqjbEoaMbDw8Nb5k1C1WpDax77RgcL8PDw8NZ4+eOqQcDkoEBv3D+21Hh4eHhrvN7ifjbOuNkiF9d8PDw8vG1e3uzPy0nvsFTvkEHz0BUeHh5ei5eXh+ohg7MHucqj4+Hh4S3zqst3vqWutsqqI45Sajw8PLxBhjBhnAp2q4cPCvPEw8PDO8qbNJmS7Xj++aSE3LTB8PDw8B7hTTbK+eR6cyjEGXh4eHhrvF7MWmUk2+JeDIGHh4f3PC8PUnub78nrq4YRN1tqPDw8vAHvXbzypblXKqov8eYuHh4e3gKv929/73HV1le+1e416vDw8PAmvF6jq9qprzbbqlvw8skyPDw8vDFvHu+e+n6vaJVv4+Hh4T3OmxeJahjRjIPx8PDwvoxXxeQFY9Jmw8PDw3uGVz1+mmPy51RD4UJhwMPDwzvKm//Dnx8gSPAHigEeHh7eFu8HGm5Uud5CrZAAAAAASUVORK5CYII=" alt="微信分享二维码">
 </div>
 
 
@@ -513,7 +480,7 @@
 
     <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
 <script>
-var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
 
 
 </script>
@@ -545,7 +512,7 @@ var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
 
 
 
-<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 
 
 

@@ -13,32 +13,33 @@
     
     
     
+    
     <title>oralce数据库时间操作 | phantomliu&#39;s blog</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
     <meta name="theme-color" content="#3F51B5">
     
     
-    <meta name="keywords" content="oracle,date">
+    <meta name="keywords" content="date,oracle">
     <meta name="description" content="查看数据库版本 v$versionSQL&amp;gt; select * from v$version;">
-<meta name="keywords" content="oracle,date">
+<meta name="keywords" content="date,oracle">
 <meta property="og:type" content="article">
 <meta property="og:title" content="oralce数据库时间操作">
-<meta property="og:url" content="http://yoursite.com/2018/02/06/oralce-date-operation/index.html">
+<meta property="og:url" content="https://liujings8.github.io/2018/02/06/oralce-date-operation/index.html">
 <meta property="og:site_name" content="phantomliu&#39;s blog">
 <meta property="og:description" content="查看数据库版本 v$versionSQL&amp;gt; select * from v$version;">
-<meta property="og:locale" content="default">
-<meta property="og:image" content="http://yoursite.com/images/20180129093548.png">
-<meta property="og:image" content="http://yoursite.com/images/20180129094432.png">
-<meta property="og:image" content="http://yoursite.com/images/20180129101923.png">
-<meta property="og:image" content="http://yoursite.com/images/20180129102848.png">
-<meta property="og:image" content="http://yoursite.com/images/20180129103913.png">
-<meta property="og:image" content="http://yoursite.com/images/20180129111527.png">
-<meta property="og:updated_time" content="2018-02-08T06:47:50.911Z">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://liujings8.github.io/images/20180129093548.png">
+<meta property="og:image" content="https://liujings8.github.io/images/20180129094432.png">
+<meta property="og:image" content="https://liujings8.github.io/images/20180129101923.png">
+<meta property="og:image" content="https://liujings8.github.io/images/20180129102848.png">
+<meta property="og:image" content="https://liujings8.github.io/images/20180129103913.png">
+<meta property="og:image" content="https://liujings8.github.io/images/20180129111527.png">
+<meta property="og:updated_time" content="2019-05-05T17:45:58.177Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="oralce数据库时间操作">
 <meta name="twitter:description" content="查看数据库版本 v$versionSQL&amp;gt; select * from v$version;">
-<meta name="twitter:image" content="http://yoursite.com/images/20180129093548.png">
+<meta name="twitter:image" content="https://liujings8.github.io/images/20180129093548.png">
     
         <link rel="alternate" type="application/atom+xml" title="phantomliu&#39;s blog" href="/atom.xml">
     
@@ -62,11 +63,11 @@
     <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
       <div class="brand">
         <a href="/" class="avatar waves-effect waves-circle waves-light">
-          <img src="/img/avatar.jpg">
+          <img src="/images/harmonica.jpg">
         </a>
         <hgroup class="introduce">
           <h5 class="nickname">phantomliu</h5>
-          <a href="mailto:634206017@qq.com" title="634206017@qq.com" class="mail">634206017@qq.com</a>
+          <a href="mailto:liujingsong1126@gmail.com" title="liujingsong1126@gmail.com" class="mail">liujingsong1126@gmail.com</a>
         </hgroup>
       </div>
     </div>
@@ -76,7 +77,7 @@
             <li class="waves-block waves-effect">
               <a href="/">
                 <i class="icon icon-lg icon-home"></i>
-                主页
+                Home
               </a>
             </li>
         
@@ -102,23 +103,9 @@
             </li>
         
             <li class="waves-block waves-effect">
-              <a href="https://github.com/yscoder" target="_blank">
+              <a href="https://github.com/liujings8" target="_blank">
                 <i class="icon icon-lg icon-github"></i>
                 Github
-              </a>
-            </li>
-        
-            <li class="waves-block waves-effect">
-              <a href="http://www.weibo.com/ysweb" target="_blank">
-                <i class="icon icon-lg icon-weibo"></i>
-                Weibo
-              </a>
-            </li>
-        
-            <li class="waves-block waves-effect">
-              <a href="/custom">
-                <i class="icon icon-lg icon-link"></i>
-                测试
               </a>
             </li>
         
@@ -139,7 +126,7 @@
             <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
                 <i class="icon icon-lg icon-chevron-left"></i>
             </a>
-            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="Search">
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
             <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
                 <i class="icon icon-lg icon-search"></i>
             </a>
@@ -178,12 +165,13 @@
 <div class="container body-wrap">
     
     <aside class="post-widget">
-        <nav class="post-toc-wrap" id="post-toc">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
             <h4>TOC</h4>
             <ol class="post-toc"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#查看数据库版本"><span class="post-toc-number">1.</span> <span class="post-toc-text">查看数据库版本</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#v-version"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">v$version</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#product-component-version"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">product_component_version</span></a></li></ol></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#获取年月日时分秒"><span class="post-toc-number">2.</span> <span class="post-toc-text">获取年月日时分秒</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#获取年"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">获取年</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#获取月"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">获取月</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#获取日"><span class="post-toc-number">2.3.</span> <span class="post-toc-text">获取日</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#获取时"><span class="post-toc-number">2.4.</span> <span class="post-toc-text">获取时</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#获取分钟"><span class="post-toc-number">2.5.</span> <span class="post-toc-text">获取分钟</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#获取秒"><span class="post-toc-number">2.6.</span> <span class="post-toc-text">获取秒</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#获取年月日时分秒-1"><span class="post-toc-number">2.7.</span> <span class="post-toc-text">获取年月日时分秒</span></a></li></ol></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#获取一周前，一个月前，一年前的日期"><span class="post-toc-number">3.</span> <span class="post-toc-text">获取一周前，一个月前，一年前的日期</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#获取当前时间一周前的时间"><span class="post-toc-number">3.1.</span> <span class="post-toc-text">获取当前时间一周前的时间</span></a></li></ol></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#根据当前时间获取最近5年，最近6个月，最近30天的时间"><span class="post-toc-number">4.</span> <span class="post-toc-text">根据当前时间获取最近5年，最近6个月，最近30天的时间</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#根据当前时间获取最近5年时间：-yyyy"><span class="post-toc-number">4.1.</span> <span class="post-toc-text">根据当前时间获取最近5年时间：(yyyy)</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#根据当前时间获取最近6个月的时间：-yyyy-mm"><span class="post-toc-number">4.2.</span> <span class="post-toc-text">根据当前时间获取最近6个月的时间：(yyyy-mm)</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#根据当前时间获取最近30天时间：-yyyy-mm-dd"><span class="post-toc-number">4.3.</span> <span class="post-toc-text">根据当前时间获取最近30天时间：(yyyy-mm-dd)</span></a></li></ol></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#参考："><span class="post-toc-number">5.</span> <span class="post-toc-text">参考：</span></a></li></ol>
         </nav>
     </aside>
-    
+
+
 <article id="post-oralce-date-operation" class="post-article article-type-post fade" itemprop="blogPost">
 
     <div class="post-card">
@@ -290,30 +278,28 @@
         </div>
 
         <blockquote class="post-copyright">
+    
     <div class="content">
         
 <span class="post-time">
-    Last updated: <time datetime="2018-02-08T06:47:50.911Z" itemprop="dateUpdated">2018-02-08 14:47:50</time>
+    最后更新时间：<time datetime="2019-05-05T17:45:58.177Z" itemprop="dateUpdated">2019-05-06 01:45:58</time>
 </span><br>
 
 
         
-        这里可以写作者留言，标签和 hexo 中所有变量及辅助函数等均可调用，示例：<a href="/2018/02/06/oralce-date-operation/" target="_blank" rel="external">http://yoursite.com/2018/02/06/oralce-date-operation/</a>
+        这里可以写作者留言，标签和 hexo 中所有变量及辅助函数等均可调用，示例：<a href="/2018/02/06/oralce-date-operation/" target="_blank" rel="external">https://liujings8.github.io/2018/02/06/oralce-date-operation/</a>
         
     </div>
+    
     <footer>
-        <a href="http://yoursite.com">
-            <img src="/img/avatar.jpg" alt="phantomliu">
+        <a href="https://liujings8.github.io">
+            <img src="/images/harmonica.jpg" alt="phantomliu">
             phantomliu
         </a>
     </footer>
 </blockquote>
 
         
-<div class="page-reward">
-    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
-</div>
-
 
 
         <div class="post-footer">
@@ -328,7 +314,7 @@
 <div class="page-share" id="pageShare">
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2018/02/06/oralce-date-operation/&title=《oralce数据库时间操作》 — phantomliu's blog&pic=http://yoursite.com/img/avatar.jpg" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://liujings8.github.io/2018/02/06/oralce-date-operation/&title=《oralce数据库时间操作》 — phantomliu's blog&pic=https://liujings8.github.io/images/harmonica.jpg" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -338,7 +324,7 @@
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2018/02/06/oralce-date-operation/&title=《oralce数据库时间操作》 — phantomliu's blog&source=查看数据库版本
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://liujings8.github.io/2018/02/06/oralce-date-operation/&title=《oralce数据库时间操作》 — phantomliu's blog&source=查看数据库版本
 v$versionSQL&gt; select * from v$version;
 
                 
@@ -347,17 +333,17 @@ v$versionSQL&gt; select * from v$version;
         </a>
       </li>
       <li>
-        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2018/02/06/oralce-date-operation/" data-title=" Facebook">
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://liujings8.github.io/2018/02/06/oralce-date-operation/" data-title=" Facebook">
           <i class="icon icon-facebook"></i>
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《oralce数据库时间操作》 — phantomliu's blog&url=http://yoursite.com/2018/02/06/oralce-date-operation/&via=http://yoursite.com" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《oralce数据库时间操作》 — phantomliu's blog&url=https://liujings8.github.io/2018/02/06/oralce-date-operation/&via=https://liujings8.github.io" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
       <li>
-        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://yoursite.com/2018/02/06/oralce-date-operation/" data-title=" Google+">
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://liujings8.github.io/2018/02/06/oralce-date-operation/" data-title=" Google+">
           <i class="icon icon-google-plus"></i>
         </a>
       </li>
@@ -414,32 +400,13 @@ v$versionSQL&gt; select * from v$version;
 
 
 
-</article>
 
-<div id="reward" class="page-modal reward-lay">
-    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
-    <h3 class="reward-title">
-        <i class="icon icon-quote-left"></i>
-        谢谢大爷~
-        <i class="icon icon-quote-right"></i>
-    </h3>
-    <div class="reward-content">
-        
-        <div class="reward-code">
-            <img id="rewardCode" src="/img/wechat.jpg" alt="打赏二维码">
-        </div>
-        
-        <label class="reward-toggle">
-            <input id="rewardToggle" type="checkbox" class="reward-toggle-check" data-wechat="/img/wechat.jpg" data-alipay="/img/alipay.jpg">
-            <div class="reward-toggle-ctrol">
-                <span class="reward-toggle-item wechat">微信</span>
-                <span class="reward-toggle-label"></span>
-                <span class="reward-toggle-item alipay">支付宝</span>
-            </div>
-        </label>
-        
-    </div>
-</div>
+
+
+
+
+
+</article>
 
 
 
@@ -462,7 +429,7 @@ v$versionSQL&gt; select * from v$version;
             
                 <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
             
-            <span>This blog is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.</span>
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
         </p>
     </div>
     <div class="bottom">
@@ -484,7 +451,7 @@ v$versionSQL&gt; select * from v$version;
 <div class="global-share" id="globalShare">
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2018/02/06/oralce-date-operation/&title=《oralce数据库时间操作》 — phantomliu's blog&pic=http://yoursite.com/img/avatar.jpg" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://liujings8.github.io/2018/02/06/oralce-date-operation/&title=《oralce数据库时间操作》 — phantomliu's blog&pic=https://liujings8.github.io/images/harmonica.jpg" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -494,7 +461,7 @@ v$versionSQL&gt; select * from v$version;
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2018/02/06/oralce-date-operation/&title=《oralce数据库时间操作》 — phantomliu's blog&source=查看数据库版本
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://liujings8.github.io/2018/02/06/oralce-date-operation/&title=《oralce数据库时间操作》 — phantomliu's blog&source=查看数据库版本
 v$versionSQL&gt; select * from v$version;
 
                 
@@ -503,17 +470,17 @@ v$versionSQL&gt; select * from v$version;
         </a>
       </li>
       <li>
-        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2018/02/06/oralce-date-operation/" data-title=" Facebook">
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://liujings8.github.io/2018/02/06/oralce-date-operation/" data-title=" Facebook">
           <i class="icon icon-facebook"></i>
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《oralce数据库时间操作》 — phantomliu's blog&url=http://yoursite.com/2018/02/06/oralce-date-operation/&via=http://yoursite.com" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《oralce数据库时间操作》 — phantomliu's blog&url=https://liujings8.github.io/2018/02/06/oralce-date-operation/&via=https://liujings8.github.io" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
       <li>
-        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://yoursite.com/2018/02/06/oralce-date-operation/" data-title=" Google+">
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://liujings8.github.io/2018/02/06/oralce-date-operation/" data-title=" Google+">
           <i class="icon icon-google-plus"></i>
         </a>
       </li>
@@ -524,7 +491,7 @@ v$versionSQL&gt; select * from v$version;
 <div class="page-modal wx-share" id="wxShare">
     <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
-    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACMElEQVR42u3aQW4CMQwF0N7/0nTTRSuV8G0PVSd5WSFgZvKCZBLbHx/xeHwb6+88+/6z19WnjAYGBsZtGY/lWE+rOvX1Vfmnv1AxMDAOYCQBtBqO15Obh2YMDAyM6oOrQXnNxsDAwLiK8WK79uT+veCLgYGBkRwmk2NnNQT3jrgYGBinMfKs+9+/fkt9AwMD41aMR3FUr81Tdb35fF2LgYGxNSMPcJMUWwJI3n9RisDAwNiaUU3NV9sjJpvCdbgvrzoGBsYNGdX2rGrozENktcnsxzsYGBjHMJLYVQ24k9ReoSyKgYGxNePa2kKvjSxZ0AiJgYGxKaN6ZO2dGfOlyY/Eo5M3BgbGrRjVbVk1xZYH9N5CRL8PBgbGFoxqM0T10yRc9gAYGBjnMJJNXn6jeXgdLQoGBsZ2jGrzaK+cUG28aHaIYGBgHMDoHSavTdXl4ThqtsDAwNiOMblp3pDRK1WWa6cYGBgbMfJAOaFWA3HCw8DAOI0xOXwmybXqYuV/DBgYGOcw8oCYT/3aRFu0rcTAwDiAMQ+4SRouX6BmWxgGBsbWjEm7Q2EH2tpWRldhYGBsyngUx2U9aINOieY/BgYGxm0Z+Zi3X+QlzOqSYWBgnMC4qiTQ2/D1UnVvrGxgYGD8Y0aeMqs2QCTBOgcXekYwMDAwqiXGVtgt3A0DAwNjuRGsFgMmKbmn12JgYBzASA6xedJtfed5URMDA+M0xnyjNgm7+RQvSOdhYGDcj/EJwH/6CFCYyfoAAAAASUVORK5CYII=" alt="微信分享二维码">
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACL0lEQVR42u3aW3KEMAwF0dn/pskCMkBfCVKx3P5KzQM483EjS/588DpOFv/89Sd/f+vzxpIhQ8ayjONy1Rhnj3X23fS+X+4uQ4aMDRgkCq8jkr9eu9fNM8uQIUPGSUTyh07DV4YMGTL6jLS4rBWOMmTIkJFuYsnt+WPVSswH9uIyZMhYkMG77n//9yvzDRkyZCzFOMLVmRuSH6j4VDJkyBjN4AFHMLyJ1g9cGTJk7MngjXty8ItEdm1UEBSIMmTIGMHgMZrGKwd3DmF8qXBlyJAxlEEulBZ2pLmftvniXqAMGTJGM0gZ1x9epm04dFpEhgwZ4xi1Nj0fDzzbqgtGmzJkyBjHSFtjaTuMHzWr/cQyZMiYzThKi8Qlef2x0lOGDBkbM2qFI4/XziYW/ceQIUPGOEYfloZsbQhxU9vKkCFjHKMWc9dhWhtJphF883kZMmQMYvSjlrTP+ofGbu4uQ4aM0YzinBO329J30wZcnNkyZMhYllF70NqoshbNnWJUhgwZMxj8oiT+ahvRB34gGTJkbMbgr6SjSj5gIEEvQ4aM3Ri1gWUaoGlTL9i+ypAhYyjjCBcfCXT2zfGgVIYMGaMZnUvzo1opko9Fi71DGTJkLMjgIVtr33cOUvDmnQwZMnZgkKAkt3m2DRcgZciQIaN9bIuXkul1ZMiQIYMw0m1nbZzweuDKkCHj3zP6w4C0fcaHEw+322TIkLEgg28d02Y9Cda0iGwNNWXIkLEe4wfcvEHPCzDa/wAAAABJRU5ErkJggg==" alt="微信分享二维码">
 </div>
 
 
@@ -532,7 +499,7 @@ v$versionSQL&gt; select * from v$version;
 
     <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
 <script>
-var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
 
 
 </script>
@@ -564,7 +531,7 @@ var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
 
 
 
-<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 
 
 
