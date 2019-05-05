@@ -294,12 +294,9 @@ Qu...
     <div class="post-content" id="post-content" itemprop="postContent">
 
     
-          众所周知HashMap是一个无顺序的Map,因为每次根据key的hashcode映射到Entry数组上，所以遍历出来的顺序并不是写入的顺序。
-因此JDK退出一个机遇HashMap但具有顺序的LinkedHashMap来解决有排序需求的场景。它的底层是继承于HashMap实现的，有一个双向链表所构成。LinkedHashMap的排序方式有两种：1.根据写入的顺序排序。2.根据访问的顺序排序。其中根据访问顺讯排序时，每次get都会将访问的值移动到链表末尾，这样操作就能得到一个按照访问顺序的链表。数据结构12345678910@Testpublic void test()&#123;    Map&lt;String,Integer&gt; map = new LinkedHashMap&lt;&gt;();    map.put(&quot;1&quot;,1);    map.put(&quot;2&quot;,2);    map.put(&quot;3&quot;,3);    map.put(&quot;4&quot;,4);    map.put(&quot;5&quot;,5);    System.out.println(map.toString());&#125;
-调试可以看到map的组成。—capture pic
-打开源码可以看到：123456789101112131415161718192021/** * The head of the doubly linked list. */private transient Entry&lt;K,V&gt; header;/** * The iteration ordering method for this linked hash map: &lt;tt&gt;true&lt;/tt&gt; * for access-order, &lt;tt&gt;false&lt;/tt&gt; for insertion-order. * * @serial */private final boolean accessOrder;private static class Entry&lt;K,V&gt; extends HashMap.Entry&lt;K,V&gt; &#123;    // These fields comprise the doubly linked list used for iteration.    Entry&lt;K,V&gt; before, after;    Entry(int hash, K key, V value, HashMap.Entry&lt;K,V&gt; next) &#123;        super(hash, key, value, next);    &#125;&#125;
-其中Entry继承于HashMap的Entry，并新增上下节点的指针，也就形成了双向链表。还有一个header的成员变量，是这个双向链表的头节点。上面demo总计程一张图如下：—-capture pic
-第一个类似于HshMap的结构。
+        
+  众所周知HashMap是一个无顺序的Map,因为每次根据key的hashcode映射到Entry数组上，所以遍历出来的顺序并不是写入的顺序。
+因此JDK退出一个机遇HashMap但具有顺序的LinkedHashMap来解决有排序需求的场景。它的底层是继承于HashMap实现的，有一个双向链表所构成。LinkedHashMap的排序方式有两种：1.根据写入的顺序排序。2.根据访问的顺序排...
     
 
         <a href="/2018/02/08/linkedHashMap-analysis/" class="post-more waves-effect waves-button">
@@ -367,6 +364,63 @@ VERSIONIntelliJ IDEA 2017.3.4(Ultimate Edition)
         </li>
     
         <li class="post-list-item fade">
+            <article id="post-oralce-date-operation" class="article-card article-type-post" itemprop="blogPost">
+
+    <div class="post-meta">
+        <time class="post-time" title="2018-02-06 14:15:00" datetime="2018-02-06T06:15:00.000Z" itemprop="datePublished">2018-02-06</time>
+
+        
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/software/">software</a></li></ul>
+
+
+
+    </div>
+
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/2018/02/06/oralce-date-operation/">oralce数据库时间操作</a>
+    </h3>
+  
+
+
+
+
+    <div class="post-content" id="post-content" itemprop="postContent">
+
+    
+        
+查看数据库版本
+v$versionSQL&gt; select * from v$version;
+
+                
+                    
+                    
+                
+                
+            
+
+product_component_versionSQL&gt; selec...
+    
+
+        <a href="/2018/02/06/oralce-date-operation/" class="post-more waves-effect waves-button">
+            Continue reading...
+        </a>
+    </div>
+    
+    <div class="post-footer">
+        
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/date/">date</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/oracle/">oracle</a></li></ul>
+
+    </div>
+    
+</article>
+
+        </li>
+    
+        <li class="post-list-item fade">
             <article id="post-toolkit" class="article-card article-type-post" itemprop="blogPost">
 
     <div class="post-meta">
@@ -405,60 +459,6 @@ VERSIONIntelliJ IDEA 2017.3.4(Ultimate Edition)
     <div class="post-footer">
         
 	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/everything/">everything</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/launchy/">launchy</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/listary/">listary</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/weex/">weex</a></li></ul>
-
-    </div>
-    
-</article>
-
-        </li>
-    
-        <li class="post-list-item fade">
-            <article id="post-oralce-date-operation" class="article-card article-type-post" itemprop="blogPost">
-
-    <div class="post-meta">
-        <time class="post-time" title="2018-02-06 14:15:00" datetime="2018-02-06T06:15:00.000Z" itemprop="datePublished">2018-02-06</time>
-
-        
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/software/">software</a></li></ul>
-
-
-
-    </div>
-
-    
-
-
-  
-    <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/2018/02/06/oralce-date-operation/">oralce数据库时间操作</a>
-    </h3>
-  
-
-
-
-
-    <div class="post-content" id="post-content" itemprop="postContent">
-
-    
-        查看数据库版本
-v$versionSQL&gt; select * from v$version;
-
-                
-                    
-                    
-                
-                
-            
-    
-
-        <a href="/2018/02/06/oralce-date-operation/" class="post-more waves-effect waves-button">
-            Continue reading...
-        </a>
-    </div>
-    
-    <div class="post-footer">
-        
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/date/">date</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/oracle/">oracle</a></li></ul>
 
     </div>
     

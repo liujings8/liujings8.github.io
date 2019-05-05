@@ -21,18 +21,18 @@
     
     
     <meta name="keywords" content="Java,HashMap,LinkedHash,jdk">
-    <meta name="description" content="众所周知HashMap是一个无顺序的Map,因为每次根据key的hashcode映射到Entry数组上，所以遍历出来的顺序并不是写入的顺序。 因此JDK退出一个机遇HashMap但具有顺序的LinkedHashMap来解决有排序需求的场景。它的底层是继承于HashMap实现的，有一个双向链表所构成。LinkedHashMap的排序方式有两种：1.根据写入的顺序排序。2.根据访问的顺序排序。其中">
+    <meta name="description" content="众所周知HashMap是一个无顺序的Map,因为每次根据key的hashcode映射到Entry数组上，所以遍历出来的顺序并不是写入的顺序。 因此JDK退出一个机遇HashMap但具有顺序的LinkedHashMap来解决有排序需求的场景。它的底层是继承于HashMap实现的，有一个双向链表所构成。LinkedHashMap的排序方式有两种：1.根据写入的顺序排序。2.根据访问的顺序排序。其">
 <meta name="keywords" content="Java,HashMap,LinkedHash,jdk">
 <meta property="og:type" content="article">
 <meta property="og:title" content="LinkedHashMap 底层分析">
 <meta property="og:url" content="https://liujings8.github.io/2018/02/08/linkedHashMap-analysis/index.html">
 <meta property="og:site_name" content="phantomliu&#39;s blog">
-<meta property="og:description" content="众所周知HashMap是一个无顺序的Map,因为每次根据key的hashcode映射到Entry数组上，所以遍历出来的顺序并不是写入的顺序。 因此JDK退出一个机遇HashMap但具有顺序的LinkedHashMap来解决有排序需求的场景。它的底层是继承于HashMap实现的，有一个双向链表所构成。LinkedHashMap的排序方式有两种：1.根据写入的顺序排序。2.根据访问的顺序排序。其中">
+<meta property="og:description" content="众所周知HashMap是一个无顺序的Map,因为每次根据key的hashcode映射到Entry数组上，所以遍历出来的顺序并不是写入的顺序。 因此JDK退出一个机遇HashMap但具有顺序的LinkedHashMap来解决有排序需求的场景。它的底层是继承于HashMap实现的，有一个双向链表所构成。LinkedHashMap的排序方式有两种：1.根据写入的顺序排序。2.根据访问的顺序排序。其">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-05-05T17:45:39.878Z">
+<meta property="og:updated_time" content="2019-05-05T18:01:56.225Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="LinkedHashMap 底层分析">
-<meta name="twitter:description" content="众所周知HashMap是一个无顺序的Map,因为每次根据key的hashcode映射到Entry数组上，所以遍历出来的顺序并不是写入的顺序。 因此JDK退出一个机遇HashMap但具有顺序的LinkedHashMap来解决有排序需求的场景。它的底层是继承于HashMap实现的，有一个双向链表所构成。LinkedHashMap的排序方式有两种：1.根据写入的顺序排序。2.根据访问的顺序排序。其中">
+<meta name="twitter:description" content="众所周知HashMap是一个无顺序的Map,因为每次根据key的hashcode映射到Entry数组上，所以遍历出来的顺序并不是写入的顺序。 因此JDK退出一个机遇HashMap但具有顺序的LinkedHashMap来解决有排序需求的场景。它的底层是继承于HashMap实现的，有一个双向链表所构成。LinkedHashMap的排序方式有两种：1.根据写入的顺序排序。2.根据访问的顺序排序。其">
     
         <link rel="alternate" type="application/atom+xml" title="phantomliu&#39;s blog" href="/atom.xml">
     
@@ -174,13 +174,14 @@
 
         </div>
         <div class="post-content" id="post-content" itemprop="postContent">
-            <p>  众所周知HashMap是一个无顺序的Map,因为每次根据key的hashcode映射到Entry<br>数组上，所以遍历出来的顺序并不是写入的顺序。</p>
+            <a id="more"></a>
+<p>  众所周知HashMap是一个无顺序的Map,因为每次根据key的hashcode映射到Entry<br>数组上，所以遍历出来的顺序并不是写入的顺序。</p>
 <p>因此JDK退出一个机遇HashMap但具有顺序的LinkedHashMap来解决有排序需求的场景。<br>它的底层是继承于HashMap实现的，有一个双向链表所构成。<br>LinkedHashMap的排序方式有两种：<br>1.根据写入的顺序排序。<br>2.根据访问的顺序排序。<br>其中根据访问顺讯排序时，每次get都会将访问的值移动到链表末尾，这样操作就能<br>得到一个按照访问顺序的链表。<br>数据结构<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">@Test</span><br><span class="line">public void test()&#123;</span><br><span class="line">    Map&lt;String,Integer&gt; map = new LinkedHashMap&lt;&gt;();</span><br><span class="line">    map.put(&quot;1&quot;,1);</span><br><span class="line">    map.put(&quot;2&quot;,2);</span><br><span class="line">    map.put(&quot;3&quot;,3);</span><br><span class="line">    map.put(&quot;4&quot;,4);</span><br><span class="line">    map.put(&quot;5&quot;,5);</span><br><span class="line">    System.out.println(map.toString());</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <p>调试可以看到map的组成。<br>—capture pic</p>
 <p>打开源码可以看到：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * The head of the doubly linked list.</span><br><span class="line"> */</span><br><span class="line">private transient Entry&lt;K,V&gt; header;</span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line"> * The iteration ordering method for this linked hash map: &lt;tt&gt;true&lt;/tt&gt;</span><br><span class="line"> * for access-order, &lt;tt&gt;false&lt;/tt&gt; for insertion-order.</span><br><span class="line"> *</span><br><span class="line"> * @serial</span><br><span class="line"> */</span><br><span class="line">private final boolean accessOrder;</span><br><span class="line"></span><br><span class="line">private static class Entry&lt;K,V&gt; extends HashMap.Entry&lt;K,V&gt; &#123;</span><br><span class="line">    // These fields comprise the doubly linked list used for iteration.</span><br><span class="line">    Entry&lt;K,V&gt; before, after;</span><br><span class="line"></span><br><span class="line">    Entry(int hash, K key, V value, HashMap.Entry&lt;K,V&gt; next) &#123;</span><br><span class="line">        super(hash, key, value, next);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <p>其中Entry继承于HashMap的Entry，并新增上下节点的指针，也就形成了双向链表。<br>还有一个header的成员变量，是这个双向链表的头节点。<br>上面demo总计程一张图如下：<br>—-capture pic</p>
 <p>第一个类似于HshMap的结构。</p>
-<a id="more"></a>
+<!-- more -->
 
         </div>
 
@@ -189,7 +190,7 @@
     <div class="content">
         
 <span class="post-time">
-    Last updated: <time datetime="2019-05-05T17:45:39.878Z" itemprop="dateUpdated">2019-05-06 01:45:39</time>
+    Last updated: <time datetime="2019-05-05T18:01:56.225Z" itemprop="dateUpdated">2019-05-06 02:01:56</time>
 </span><br>
 
 
