@@ -1,4 +1,5 @@
 ---
+reward: false
 title: 面试官最爱的volatile关键字
 date: 2018-01-22 23:08:32
 categories: java

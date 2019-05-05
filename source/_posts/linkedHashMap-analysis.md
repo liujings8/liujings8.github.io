@@ -1,4 +1,5 @@
 ---
+reward: false
 title: LinkedHashMap 底层分析
 date: 2018-02-08 09:40:50
 categories: java
@@ -8,6 +9,7 @@ tags:
     - LinkedHash
     - jdk
 ---
+<!-- more -->
   众所周知HashMap是一个无顺序的Map,因为每次根据key的hashcode映射到Entry
 数组上，所以遍历出来的顺序并不是写入的顺序。
   

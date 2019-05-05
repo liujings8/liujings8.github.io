@@ -1,4 +1,5 @@
 ---
+reward: false
 title: oralce数据库时间操作
 date: 2018-02-06 14:15:00
 categories: software
@@ -6,11 +7,11 @@ tags:
      - date
      - oracle
 ---
+<!-- more -->
 #### 查看数据库版本
 - ##### v$version
 SQL> select * from v$version;<br/>
 ![](/images/20180129093548.png)
-<!-- more -->
 
 - ##### product_component_version
 SQL> select * from product_component_version;<br/>

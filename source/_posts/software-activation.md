@@ -1,4 +1,5 @@
 ---
+reward: false
 title: 常用软件激活教程
 date: 2018-02-07 14:15:00
 categories: software
